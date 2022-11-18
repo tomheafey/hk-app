@@ -5,3 +5,44 @@
 //unequip:
 //replace slot with empty slot image
 //remove from state
+
+import { useCharmContext } from "../context/CharmContext";
+
+import React from "react";
+import styled from "@emotion/styled";
+
+const CurrentCharms = () => {
+    const { charms, addCharm, removeCharm, notchCount } = useCharmContext();
+
+    function handleCharmClick(charm) {
+        removeCharm(charm.id);
+    }
+
+    return (
+        <CharmSelectionContainer>
+            {charms.map((charm) => {
+                return (
+                    <Div key={charm.id} onClick={(e) => handleCharmClick(charm)}>
+                        {charm.id}
+                    </Div>
+                );
+            })}
+        </CharmSelectionContainer>
+    );
+};
+
+export default CurrentCharms;
+
+const CharmSelectionContainer = styled("div")((props) => ({
+    border: "1px solid blue",
+    display: "flex",
+    flexFlow: "row wrap",
+}));
+
+const Div = styled("span")((props) => ({
+    border: "1px solid black",
+    overflowWrap: "break-word",
+    fontSize: "12px",
+    height: "75px",
+    width: "75px",
+}));

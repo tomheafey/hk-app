@@ -13,3 +13,5 @@
 //  focus speed
 //  nail art charge time
 //  dreamnail speed
+
+//need to figure out how to handle charm interactions
