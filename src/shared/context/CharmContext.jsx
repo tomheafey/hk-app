@@ -19,11 +19,5 @@ export function CharmProvider(props) {
         setCharms([]);
     };
 
-    const notchCount = () => {
-        const count = 0;
-        charms.foreach((charm) => (count = count + charm.notches));
-        return count;
-    };
-
-    return <CharmContext.Provider value={{ charms, addCharm, removeCharm, clearCharms, charmCount: notchCount }}>{props.children}</CharmContext.Provider>;
+    return <CharmContext.Provider value={{ charms, addCharm, removeCharm, clearCharms }}>{props.children}</CharmContext.Provider>;
 }
