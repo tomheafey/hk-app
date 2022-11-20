@@ -24,14 +24,41 @@ import { useNotchesContext } from "../context/NotchesContext";
 
 const CharmSelector = () => {
     const { charms, addCharm, removeCharm } = useCharmContext();
-    const { notchTotal } = useNotchesContext();
+    const { notchTotal, notchCount, setNotchCount, notchesArray } = useNotchesContext();
 
-    const notchCount = useMemo(() => {
+    // let isOvercharmed = notchCount <= notchTotal ? false : true;
+    // if (isOvercharmed) {
+    //     for (let i = 1; i <= notchCount; i++) {
+    //         if (i <= notchTotal) {
+    //             notchesArray.push("c");
+    //         } else {
+    //             notchesArray.push("!");
+    //         }
+    //     }
+    // } else {
+    //     for (let i = 1; i <= notchTotal; i++) {
+    //         if (i <= notchCount) {
+    //             notchesArray.push("c");
+    //         } else {
+    //             notchesArray.push("O");
+    //         }
+    //     }
+    // }
+
+    useEffect(() => {
         let count = 0;
         charms.forEach((c) => (count += c.notches));
         console.log(count);
-        return count;
+        setNotchCount(count);
+        return;
     }, [charms]);
+
+    // const notchCount = useMemo(() => {
+    //     let count = 0;
+    //     charms.forEach((c) => (count += c.notches));
+    //     console.log(count);
+    //     return count;
+    // }, [charms]);
 
     function handleCharmClick(charm) {
         //TODO: logic for preventing add at notch max
@@ -50,6 +77,8 @@ const CharmSelector = () => {
         //if notch available do overcharm logic
         if (notchCount < notchTotal) {
             //TODO: figure out how to handle overcharming
+            addCharm(charm);
+            return;
         }
 
         if (notchCount >= notchTotal) {

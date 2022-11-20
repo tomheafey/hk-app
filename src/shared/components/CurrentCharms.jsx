@@ -14,7 +14,7 @@ import { useNotchesContext } from "../context/NotchesContext";
 
 const CurrentCharms = () => {
     const { charms, addCharm, removeCharm, notchCount } = useCharmContext();
-    const { notchTotal } = useNotchesContext();
+    const { notchTotal, notchesArray } = useNotchesContext();
 
     function handleCharmClick(charm) {
         removeCharm(charm.id);
@@ -24,8 +24,8 @@ const CurrentCharms = () => {
         <>
             <div>
                 NOTCHES:
-                {[...Array(notchTotal)].map((n, idx) => (
-                    <span key={idx}>O</span>
+                {notchesArray.map((n, idx) => (
+                    <span key={idx}>{n}</span>
                 ))}
             </div>
             <CharmSelectionContainer>
