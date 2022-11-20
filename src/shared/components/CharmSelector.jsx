@@ -2,6 +2,8 @@ import React, { useContext, useEffect, useMemo } from "react";
 import { charmList } from "../../charmList";
 import styled from "@emotion/styled";
 import { useCharmContext } from "../context/CharmContext";
+import CharmDisplay from "./CharmDisplay";
+import { useNotchesContext } from "../context/NotchesContext";
 
 //grid with all 40some charms
 //hover gives popup with info?
@@ -22,7 +24,8 @@ import { useCharmContext } from "../context/CharmContext";
 
 const CharmSelector = () => {
     const { charms, addCharm, removeCharm } = useCharmContext();
-    const maxNotches = 11; //! possibly change later if we allow selector for notches
+    const { notchTotal } = useNotchesContext();
+
     const notchCount = useMemo(() => {
         let count = 0;
         charms.forEach((c) => (count += c.notches));
@@ -39,17 +42,17 @@ const CharmSelector = () => {
         }
 
         //if enough notches available, just add
-        if (notchCount + charm.notches <= maxNotches) {
+        if (notchCount + charm.notches <= notchTotal) {
             addCharm(charm);
             return;
         }
 
         //if notch available do overcharm logic
-        if (notchCount < maxNotches) {
+        if (notchCount < notchTotal) {
             //TODO: figure out how to handle overcharming
         }
 
-        if (notchCount >= maxNotches) {
+        if (notchCount >= notchTotal) {
             //! if already at max or overcharmed, do nothing
             //! possibly add indication
         }
@@ -63,6 +66,7 @@ const CharmSelector = () => {
                 return (
                     <Div key={charm.id} onClick={(e) => handleCharmClick(charm)}>
                         {charm.name}
+                        {/* <CharmDisplay charm={charm} /> */}
                         <br />
                         <br />
                         {charm.notches}

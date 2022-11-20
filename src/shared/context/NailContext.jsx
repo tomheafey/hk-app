@@ -3,7 +3,7 @@
 //  info panel
 //      potentially the "boss page" component
 
-import { createContext, useContext, useMemo, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 const NailContext = createContext();
 

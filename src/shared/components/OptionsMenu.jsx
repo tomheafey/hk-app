@@ -11,11 +11,17 @@
 //  howling wraiths vs abyss shriek
 //should DEFAULT everything to 112% completion status
 
+//TODO: create functional components for dropdowns and radio groups
+
 import React, { useEffect, useState } from "react";
+import { useHPContext } from "../context/HPContext";
 import { useNailContext } from "../context/NailContext";
+import { useNotchesContext } from "../context/NotchesContext";
 
 const OptionsMenu = () => {
     const { setNailDamage } = useNailContext();
+    const { baseHP, setBaseHP } = useHPContext();
+    const { notchTotal, setNotchTotal } = useNotchesContext();
     const [nailLevel, setNailLevel] = useState("pure");
     const [isHidden, setIsHidden] = useState(false);
 
@@ -49,16 +55,45 @@ const OptionsMenu = () => {
         { val: "old", label: "Old Nail" },
     ];
 
+    let hpOptions = [];
+    for (let i = 9; i >= 5; i--) {
+        hpOptions.push({ val: i, label: i.toString() });
+    }
+
+    let notchOptions = [];
+    for (let i = 11; i >= 3; i--) {
+        notchOptions.push({ val: i, label: i.toString() });
+    }
+
     return (
         <>
             <button onClick={(e) => setIsHidden(!isHidden)}>{isHidden ? "unhide" : "hide"} options</button>
             {!isHidden && (
                 <div>
+                    {/* these drop-downs could be func comps */}
                     <label htmlFor="nail-level">Nail level</label>
                     <select id="nail-level" value={nailLevel} onChange={(e) => setNailLevel(e.target.value)}>
                         {nailLevels.map((n) => (
                             <option key={n.val} value={n.val}>
                                 {n.label}
+                            </option>
+                        ))}
+                    </select>
+
+                    <label htmlFor="base-hp">Base Masks</label>
+                    <select id="base-hp" value={baseHP} onChange={(e) => setBaseHP(e.target.value)}>
+                        {hpOptions.map((opt) => (
+                            <option key={opt.val} value={opt.val}>
+                                {opt.label}
+                            </option>
+                        ))}
+                    </select>
+
+                    <label htmlFor="notches">Notches</label>
+                    <select id="notches" value={notchTotal} onChange={(e) => setNotchTotal(e.target.value)}>
+                        {notchOptions.map((opt) => (
+                            <option key={opt.val} value={opt.val}>
+                                {opt.label}
                             </option>
                         ))}
                     </select>

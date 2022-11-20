@@ -18,14 +18,17 @@
 
 import React from "react";
 import { useCharmContext } from "../context/CharmContext";
+import { useHPContext } from "../context/HPContext";
 import { useNailContext } from "../context/NailContext";
 
 const InfoPanel = () => {
     const { charms } = useCharmContext();
     const { nailDamage } = useNailContext();
+    const { baseHP } = useHPContext();
 
     return (
         <>
+            <div>HP: {baseHP}</div>
             <div>NAIL DAMAGE: {nailDamage}</div>
             <div>VS/SS DAMAGE</div>
             <div>DD/DD DAMAGE</div>
