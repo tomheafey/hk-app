@@ -29,7 +29,7 @@ const InfoPanel = () => {
             <div>NAIL DAMAGE: {nailDamage}</div>
             <div>VS/SS DAMAGE</div>
             <div>DD/DD DAMAGE</div>
-            <div>ABS/HW DAMAGE</div>
+            <div>AS/HW DAMAGE</div>
             {charms.map((c) => {
                 return <div key={c.id}>{c.effectText}</div>;
             })}
