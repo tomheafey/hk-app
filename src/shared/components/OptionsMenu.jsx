@@ -12,10 +12,35 @@
 //  howling wraiths vs abyss shriek
 //should DEFAULT everything to 112% completion status
 
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useNailContext } from "../context/NailContext";
 
 const OptionsMenu = () => {
+    const { setNailDamage } = useNailContext();
     const [nailLevel, setNailLevel] = useState("pure");
+
+    useEffect(() => {
+        switch (nailLevel) {
+            case "pure":
+                setNailDamage(21);
+                break;
+            case "coiled":
+                setNailDamage(17);
+                break;
+            case "channelled":
+                setNailDamage(13);
+                break;
+            case "sharpened":
+                setNailDamage(9);
+                break;
+            case "old":
+                setNailDamage(5);
+                break;
+            default:
+                break;
+        }
+    }, [nailLevel]);
+
     const nailLevels = [
         { val: "pure", label: "Pure Nail" },
         { val: "coiled", label: "Coiled Nail" },
