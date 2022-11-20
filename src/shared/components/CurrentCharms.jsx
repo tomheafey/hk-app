@@ -13,8 +13,8 @@ import styled from "@emotion/styled";
 import { useNotchesContext } from "../context/NotchesContext";
 
 const CurrentCharms = () => {
-    const { charms, addCharm, removeCharm, notchCount } = useCharmContext();
-    const { notchTotal, notchesArray } = useNotchesContext();
+    const { charms, removeCharm } = useCharmContext();
+    const { notchTotal, notchesArray, notchCount, isOvercharmed } = useNotchesContext();
 
     function handleCharmClick(charm) {
         removeCharm(charm.id);
@@ -23,6 +23,7 @@ const CurrentCharms = () => {
     return (
         <>
             <div>
+                {isOvercharmed && <div>OVERCHARMED</div>}
                 NOTCHES:
                 {notchesArray.map((n, idx) => (
                     <span key={idx}>{n}</span>

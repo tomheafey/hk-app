@@ -11,7 +11,12 @@ export function NotchesProvider(props) {
 
     const [notchesArray, setNotchesArray] = useState([]);
 
-    let isOvercharmed = notchCount <= notchTotal ? false : true;
+    const [isOvercharmed, setIsOvercharmed] = useState(false);
+
+    useEffect(() => {
+        notchCount > notchTotal ? setIsOvercharmed(true) : setIsOvercharmed(false);
+    }, [notchCount]);
+
     useEffect(() => {
         let temp = [];
         if (isOvercharmed) {
@@ -38,5 +43,5 @@ export function NotchesProvider(props) {
         setNotchesArray([...temp]);
     }, [notchCount, isOvercharmed]);
 
-    return <NotchesContext.Provider value={{ notchTotal, setNotchTotal, notchCount, setNotchCount, notchesArray }}>{props.children}</NotchesContext.Provider>;
+    return <NotchesContext.Provider value={{ notchTotal, setNotchTotal, notchCount, setNotchCount, notchesArray, isOvercharmed }}>{props.children}</NotchesContext.Provider>;
 }
