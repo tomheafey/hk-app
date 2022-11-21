@@ -15,6 +15,8 @@
 //TODO: deal with changing notches total if charms already equipped
 
 import React, { useEffect, useState } from "react";
+import { useCharmContext } from "../context/CharmContext";
+import { useCharmTogglesContext } from "../context/CharmTogglesContext";
 import { useHPContext } from "../context/HPContext";
 import { useNailContext } from "../context/NailContext";
 import { useNotchesContext } from "../context/NotchesContext";
@@ -23,10 +25,34 @@ import { useSpellsContext } from "../context/SpellsContext";
 const OptionsMenu = () => {
     const { setBaseNailDamage } = useNailContext();
     const { baseHP, setBaseHP } = useHPContext();
+    const { charms, removeCharm } = useCharmContext();
     const { notchTotal, setNotchTotal } = useNotchesContext();
     const { baseFireballDamage, setBaseFireballDamage, baseDiveDamage, setBaseDiveDamage, baseShriekDamage, setBaseShriekDamage } = useSpellsContext();
+    const { hasVoidHeart, setHasVoidHeart, hasCarefreeMelody, setHasCarefreeMelody } = useCharmTogglesContext();
+
     const [nailLevel, setNailLevel] = useState("pure");
     const [isHidden, setIsHidden] = useState(false);
+
+    //TODO: if user changes carefree/grimm or void/king AND user has one equipped, clear charms out or at least remove it
+    function handleCharmToggles(e) {
+        console.log(e.target.value);
+        if (e.target.value === "carefreeMelody") {
+            removeCharm("grimmchild");
+            setHasCarefreeMelody(true);
+        }
+        if (e.target.value === "grimmchild") {
+            removeCharm("carefreeMelody");
+            setHasCarefreeMelody(false);
+        }
+        if (e.target.value === "voidHeart") {
+            removeCharm("kingsoul");
+            setHasVoidHeart(true);
+        }
+        if (e.target.value === "kingsoul") {
+            removeCharm("voidHeart");
+            setHasVoidHeart(false);
+        }
+    }
 
     useEffect(() => {
         switch (nailLevel) {
@@ -67,7 +93,6 @@ const OptionsMenu = () => {
     for (let i = 11; i >= 3; i--) {
         notchOptions.push({ val: i, label: i.toString() });
     }
-    console.log("fireball dmg: " + baseFireballDamage);
     return (
         <>
             <button onClick={(e) => setIsHidden(!isHidden)}>{isHidden ? "unhide" : "hide"} options</button>
@@ -101,18 +126,70 @@ const OptionsMenu = () => {
                         ))}
                     </select>
 
-                    <div>
-                        <input type="radio" name="vh-ks" id="void-heart" defaultChecked />
-                        <label htmlFor="void-heart">Void Heart</label>
-                        <input type="radio" name="vh-ks" id="kingsoul" />
-                        <label htmlFor="kingsoul">Kingsoul</label>
-                    </div>
-
-                    <div>
+                    {/* <div>
                         <input type="radio" name="cm-gc" id="carefree-melody" defaultChecked />
                         <label htmlFor="carefree-melody">Carefree Melody</label>
                         <input type="radio" name="cm-gc" id="grimmchild" />
                         <label htmlFor="grimmchild">Grimmchild</label>
+                    </div> */}
+
+                    <div>
+                        <input
+                            type="radio"
+                            name="cm-gc"
+                            id="carefree-melody"
+                            value={"carefreeMelody"}
+                            onChange={(e) => {
+                                handleCharmToggles(e);
+                            }}
+                            checked={hasCarefreeMelody}
+                        />
+                        <label htmlFor="carefree-melody">Carefree Melody</label>
+
+                        <input
+                            type="radio"
+                            name="cm-gc"
+                            id="grimmchild"
+                            value={"grimmchild"}
+                            onChange={(e) => {
+                                handleCharmToggles(e);
+                            }}
+                            checked={!hasCarefreeMelody}
+                        />
+                        <label htmlFor="grimmchild">Grimmchild</label>
+                    </div>
+
+                    {/* <div>
+                        <input type="radio" name="vh-ks" id="void-heart" defaultChecked />
+                        <label htmlFor="void-heart">Void Heart</label>
+                        <input type="radio" name="vh-ks" id="kingsoul" />
+                        <label htmlFor="kingsoul">Kingsoul</label>
+                    </div> */}
+
+                    <div>
+                        <input
+                            type="radio"
+                            name="vh-ks"
+                            id="void-heart"
+                            value={"voidHeart"}
+                            onChange={(e) => {
+                                handleCharmToggles(e);
+                            }}
+                            checked={hasVoidHeart}
+                        />
+                        <label htmlFor="void-heart">Void Heart</label>
+
+                        <input
+                            type="radio"
+                            name="vh-ks"
+                            id="kingsoul"
+                            value={"kingsoul"}
+                            onChange={(e) => {
+                                handleCharmToggles(e);
+                            }}
+                            checked={!hasVoidHeart}
+                        />
+                        <label htmlFor="kingsoul">Kingsoul</label>
                     </div>
 
                     {/* <div>

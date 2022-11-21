@@ -1,4 +1,4 @@
-export const charmList = [
+export const masterCharmList = [
     {
         id: "waywardCompass",
         name: "Wayward Compass",
@@ -93,15 +93,15 @@ export const charmList = [
         effectText:
             "When at full Masks, Nail attacks fire a projectile dealing 50% Nail damage per hit. [The damage is rounded to the nearest integer, or nearest even integer if halfway between two. This results in 2/4/6/8/10 damage at Nail upgrades 0/1/2/3/4.]",
     },
-    {
-        id: "fragileHeart",
-        name: "Fragile Heart",
-        pngName: "Fragile_Heart",
-        notches: 2,
-        flavorText: "Increases the health of the bearer, allowing them to take more damage. This charm is fragile, and will break if its bearer is killed.",
-        effectText: "Adds two Masks of health. Breaks upon death. Can be given to Divine to turn it Unbreakable",
-        maskInc: 2,
-    },
+    // {
+    //     id: "fragileHeart",
+    //     name: "Fragile Heart",
+    //     pngName: "Fragile_Heart",
+    //     notches: 2,
+    //     flavorText: "Increases the health of the bearer, allowing them to take more damage. This charm is fragile, and will break if its bearer is killed.",
+    //     effectText: "Adds two Masks of health. Breaks upon death. Can be given to Divine to turn it Unbreakable",
+    //     maskInc: 2,
+    // },
     {
         id: "unbreakableHeart",
         name: "Unbreakable Heart",
@@ -111,14 +111,14 @@ export const charmList = [
         effectText: "Adds two Masks of health",
         maskInc: 2,
     },
-    {
-        id: "fragileGreed",
-        name: "Fragile Greed",
-        pngName: "Fragile_Greed",
-        notches: 2,
-        flavorText: "Causes the bearer to find more Geo when defeating enemies. This charm is fragile, and will break if its bearer is killed.",
-        effectText: "Enemies drop 20-100% more Geo[The amount of each Geo type (1, 5, or 25 Geo) is increased by 20%, rounded up.] Breaks upon death. Can be given to Divine to make it Unbreakable",
-    },
+    // {
+    //     id: "fragileGreed",
+    //     name: "Fragile Greed",
+    //     pngName: "Fragile_Greed",
+    //     notches: 2,
+    //     flavorText: "Causes the bearer to find more Geo when defeating enemies. This charm is fragile, and will break if its bearer is killed.",
+    //     effectText: "Enemies drop 20-100% more Geo[The amount of each Geo type (1, 5, or 25 Geo) is increased by 20%, rounded up.] Breaks upon death. Can be given to Divine to make it Unbreakable",
+    // },
     {
         id: "unbreakableGreed",
         name: "Unbreakable Greed",
@@ -127,16 +127,16 @@ export const charmList = [
         flavorText: "Causes the bearer to find more Geo when defeating enemies. This charm is unbreakable.",
         effectText: "Enemies drop 20-100% more Geo. The amount of each Geo type (1, 5, or 25 Geo) is increased by 20%, rounded up",
     },
-    {
-        id: "fragileStrength",
-        name: "Fragile Strength",
-        pngName: "Fragile_Strength",
-        notches: 3,
-        flavorText: "Strengthens the bearer, increasing the damage they deal to enemies with their nail. This charm is fragile, and will break if its bearer is killed.",
-        effectText:
-            "Increases Nail damage by 50%[The damage is rounded to the nearest integer, or to the nearest even integer if halfway between two. This results in 8/14/20/26/32 damage at Nail upgrades 0/1/2/3/4.] Breaks upon death. Can be given to Divine to turn it Unbreakable",
-        nailDmg: 0.5,
-    },
+    // {
+    //     id: "fragileStrength",
+    //     name: "Fragile Strength",
+    //     pngName: "Fragile_Strength",
+    //     notches: 3,
+    //     flavorText: "Strengthens the bearer, increasing the damage they deal to enemies with their nail. This charm is fragile, and will break if its bearer is killed.",
+    //     effectText:
+    //         "Increases Nail damage by 50%[The damage is rounded to the nearest integer, or to the nearest even integer if halfway between two. This results in 8/14/20/26/32 damage at Nail upgrades 0/1/2/3/4.] Breaks upon death. Can be given to Divine to turn it Unbreakable",
+    //     nailDmg: 0.5,
+    // },
     {
         id: "unbreakableStrength",
         name: "Unbreakable Strength",
@@ -370,40 +370,79 @@ export const charmList = [
         flavorText: "Defensive charm once wielded by a tribe that could shape dreams. Conjures a shield that follows the bearer and attempts to protect them.",
         effectText: "Conjures a shield that slowly rotates around the Knight's position, blocks certain projectiles, and deals 1x Nail damage when colliding with an enemy",
     },
-    {
-        id: "grimmchild",
-        name: "Grimmchild",
-        pngName: "Grimmchild",
-        notches: 2,
-        flavorText:
-            "Worn by those who take part in the Grimm Troupe's RitualThe bearer must seek the Grimmkin and collect their flames. Uncollected flames will appear on the bearer's map. (Summons a flying creature which will deal damage to enemies. Damage dealt scales with number of flames collected.)",
-        effectText: "Summons a flying companion that deals 11 damage per shot",
-    },
-    {
-        id: "carefreeMelody",
-        name: "Carefree Melody",
-        pngName: "Carefree_Melody",
-        notches: 3,
-        flavorText: "Token commemorating the start of a friendship.Contains a song of protections that may defend the bearer from damage.",
-        effectText: "Has a chance to block incoming damage. [The average block chance is ~22.46%.] ***https://hollowknight.fandom.com/wiki/Carefree_Melody#Probability",
-    },
-    {
-        id: "kingsoul",
-        name: "Kingsoul",
-        pngName: "Kingsoul",
-        notches: 5,
-        flavorText:
-            "Holy charm symbolising a union between higher beings.The bearer will slowly absorb the limitless Soul contained within. Opens the way to a birthplace. (Secondary Effect: Grants access to the Birthplace in the southern Abyss.)",
-        effectText: "Slowly generates 4 SOUL every 2 seconds. Opens a secret area within the Abyss. Unlocks a new interaction with the White Lady",
-    },
-    {
-        id: "voidHeart",
-        name: "Void Heart",
-        pngName: "Void_Heart",
-        notches: 0,
-        flavorText:
-            "An emptiness that was hidden within, now unconstrained. Unifies the void under the bearer's will.This charm is a part of its bearer and can not be unequipped. (Secondary Effect: Grants access to multiple endings, locks out all other endings. Removes hostility from some enemy types.)",
-        effectText:
-            "Unlocks 4 endings. Prevents the non-Void Heart ending for the save file. Renders the Siblings, Void Tendrils and Shade passive. Allows access to the Radiance. Allows access to the Godmaster content Pantheon of Hallownest. Unlocks new interactions with certain NPCs",
-    },
+    // {
+    //     id: "grimmchild",
+    //     name: "Grimmchild",
+    //     pngName: "Grimmchild",
+    //     notches: 2,
+    //     flavorText:
+    //         "Worn by those who take part in the Grimm Troupe's RitualThe bearer must seek the Grimmkin and collect their flames. Uncollected flames will appear on the bearer's map. (Summons a flying creature which will deal damage to enemies. Damage dealt scales with number of flames collected.)",
+    //     effectText: "Summons a flying companion that deals 11 damage per shot",
+    // },
+    // {
+    //     id: "carefreeMelody",
+    //     name: "Carefree Melody",
+    //     pngName: "Carefree_Melody",
+    //     notches: 3,
+    //     flavorText: "Token commemorating the start of a friendship.Contains a song of protections that may defend the bearer from damage.",
+    //     effectText: "Has a chance to block incoming damage. [The average block chance is ~22.46%.] ***https://hollowknight.fandom.com/wiki/Carefree_Melody#Probability",
+    // },
+    // {
+    //     id: "voidHeart",
+    //     name: "Void Heart",
+    //     pngName: "Void_Heart",
+    //     notches: 0,
+    //     flavorText:
+    //         "An emptiness that was hidden within, now unconstrained. Unifies the void under the bearer's will.This charm is a part of its bearer and can not be unequipped. (Secondary Effect: Grants access to multiple endings, locks out all other endings. Removes hostility from some enemy types.)",
+    //     effectText:
+    //         "Unlocks 4 endings. Prevents the non-Void Heart ending for the save file. Renders the Siblings, Void Tendrils and Shade passive. Allows access to the Radiance. Allows access to the Godmaster content Pantheon of Hallownest. Unlocks new interactions with certain NPCs",
+    // },
+    // {
+    //     id: "kingsoul",
+    //     name: "Kingsoul",
+    //     pngName: "Kingsoul",
+    //     notches: 5,
+    //     flavorText:
+    //         "Holy charm symbolising a union between higher beings.The bearer will slowly absorb the limitless Soul contained within. Opens the way to a birthplace. (Secondary Effect: Grants access to the Birthplace in the southern Abyss.)",
+    //     effectText: "Slowly generates 4 SOUL every 2 seconds. Opens a secret area within the Abyss. Unlocks a new interaction with the White Lady",
+    // },
 ];
+
+export const carefreeMelody = {
+    id: "carefreeMelody",
+    name: "Carefree Melody",
+    pngName: "Carefree_Melody",
+    notches: 3,
+    flavorText: "Token commemorating the start of a friendship.Contains a song of protections that may defend the bearer from damage.",
+    effectText: "Has a chance to block incoming damage. [The average block chance is ~22.46%.] ***https://hollowknight.fandom.com/wiki/Carefree_Melody#Probability",
+};
+
+export const grimmchild = {
+    id: "grimmchild",
+    name: "Grimmchild",
+    pngName: "Grimmchild",
+    notches: 2,
+    flavorText:
+        "Worn by those who take part in the Grimm Troupe's RitualThe bearer must seek the Grimmkin and collect their flames. Uncollected flames will appear on the bearer's map. (Summons a flying creature which will deal damage to enemies. Damage dealt scales with number of flames collected.)",
+    effectText: "Summons a flying companion that deals 11 damage per shot",
+};
+
+export const voidHeart = {
+    id: "voidHeart",
+    name: "Void Heart",
+    pngName: "Void_Heart",
+    notches: 0,
+    flavorText:
+        "An emptiness that was hidden within, now unconstrained. Unifies the void under the bearer's will.This charm is a part of its bearer and can not be unequipped. (Secondary Effect: Grants access to multiple endings, locks out all other endings. Removes hostility from some enemy types.)",
+    effectText:
+        "Unlocks 4 endings. Prevents the non-Void Heart ending for the save file. Renders the Siblings, Void Tendrils and Shade passive. Allows access to the Radiance. Allows access to the Godmaster content Pantheon of Hallownest. Unlocks new interactions with certain NPCs",
+};
+export const kingsoul = {
+    id: "kingsoul",
+    name: "Kingsoul",
+    pngName: "Kingsoul",
+    notches: 5,
+    flavorText:
+        "Holy charm symbolising a union between higher beings.The bearer will slowly absorb the limitless Soul contained within. Opens the way to a birthplace. (Secondary Effect: Grants access to the Birthplace in the southern Abyss.)",
+    effectText: "Slowly generates 4 SOUL every 2 seconds. Opens a secret area within the Abyss. Unlocks a new interaction with the White Lady",
+};

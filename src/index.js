@@ -8,6 +8,7 @@ import { NailProvider } from "./shared/context/NailContext";
 import { HPProvider } from "./shared/context/HPContext";
 import { NotchesProvider } from "./shared/context/NotchesContext";
 import { SpellsProvider } from "./shared/context/SpellsContext";
+import { CharmTogglesProvider } from "./shared/context/CharmTogglesContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,7 +17,9 @@ root.render(
             <HPProvider>
                 <NotchesProvider>
                     <SpellsProvider>
-                        <App />
+                        <CharmTogglesProvider>
+                            <App />
+                        </CharmTogglesProvider>
                     </SpellsProvider>
                 </NotchesProvider>
             </HPProvider>
