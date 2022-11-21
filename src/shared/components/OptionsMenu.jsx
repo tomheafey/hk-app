@@ -12,35 +12,38 @@
 //should DEFAULT everything to 112% completion status
 
 //TODO: create functional components for dropdowns and radio groups
+//TODO: deal with changing notches total if charms already equipped
 
 import React, { useEffect, useState } from "react";
 import { useHPContext } from "../context/HPContext";
 import { useNailContext } from "../context/NailContext";
 import { useNotchesContext } from "../context/NotchesContext";
+import { useSpellsContext } from "../context/SpellsContext";
 
 const OptionsMenu = () => {
-    const { setNailDamage } = useNailContext();
+    const { setBaseNailDamage } = useNailContext();
     const { baseHP, setBaseHP } = useHPContext();
     const { notchTotal, setNotchTotal } = useNotchesContext();
+    const { baseFireballDamage, setBaseFireballDamage, baseDiveDamage, setBaseDiveDamage, baseShriekDamage, setBaseShriekDamage } = useSpellsContext();
     const [nailLevel, setNailLevel] = useState("pure");
     const [isHidden, setIsHidden] = useState(false);
 
     useEffect(() => {
         switch (nailLevel) {
             case "pure":
-                setNailDamage(21);
+                setBaseNailDamage(21);
                 break;
             case "coiled":
-                setNailDamage(17);
+                setBaseNailDamage(17);
                 break;
             case "channelled":
-                setNailDamage(13);
+                setBaseNailDamage(13);
                 break;
             case "sharpened":
-                setNailDamage(9);
+                setBaseNailDamage(9);
                 break;
             case "old":
-                setNailDamage(5);
+                setBaseNailDamage(5);
                 break;
             default:
                 break;
@@ -64,7 +67,7 @@ const OptionsMenu = () => {
     for (let i = 11; i >= 3; i--) {
         notchOptions.push({ val: i, label: i.toString() });
     }
-
+    console.log("fireball dmg: " + baseFireballDamage);
     return (
         <>
             <button onClick={(e) => setIsHidden(!isHidden)}>{isHidden ? "unhide" : "hide"} options</button>
@@ -112,24 +115,97 @@ const OptionsMenu = () => {
                         <label htmlFor="grimmchild">Grimmchild</label>
                     </div>
 
-                    <div>
+                    {/* <div>
                         <input type="radio" name="ss-vs" id="shade-soul" defaultChecked />
                         <label htmlFor="shade-soul">Shade Soul</label>
                         <input type="radio" name="ss-vs" id="vengeful-spirit" />
                         <label htmlFor="vengeful-spirit">Vengeful Spirit</label>
-                    </div>
+                    </div> */}
 
                     <div>
+                        <input
+                            type="radio"
+                            name="ss-vs"
+                            id="shade-soul"
+                            value={30}
+                            onChange={(e) => {
+                                setBaseFireballDamage(parseInt(e.target.value));
+                            }}
+                            checked={baseFireballDamage === 30}
+                        />
+                        <label htmlFor="shade-soul">Shade Soul</label>
+                        <input
+                            type="radio"
+                            name="ss-vs"
+                            id="vengeful-spirit"
+                            value={15}
+                            onChange={(e) => {
+                                setBaseFireballDamage(parseInt(e.target.value));
+                            }}
+                            checked={baseFireballDamage === 15}
+                        />
+                        <label htmlFor="vengeful-spirit">Vengeful Spirit</label>
+                    </div>
+
+                    {/* <div>
                         <input type="radio" name="dd-dd" id="descending-dark" defaultChecked />
                         <label htmlFor="descending-dark">Descending Dark</label>
                         <input type="radio" name="dd-dd" id="desolate-dive" />
                         <label htmlFor="desolate-dive">Desolate Dive</label>
+                    </div> */}
+                    <div>
+                        <input
+                            type="radio"
+                            name="dd-dd"
+                            id="descending-dark"
+                            value={65}
+                            onChange={(e) => {
+                                setBaseDiveDamage(parseInt(e.target.value));
+                            }}
+                            checked={baseDiveDamage === 65}
+                        />
+                        <label htmlFor="descending-dark">Descending Dark</label>
+                        <input
+                            type="radio"
+                            name="dd-dd"
+                            id="desolate-dive"
+                            value={35}
+                            onChange={(e) => {
+                                setBaseDiveDamage(parseInt(e.target.value));
+                            }}
+                            checked={baseDiveDamage === 35}
+                        />
+                        <label htmlFor="desolate-dive">Desolate Dive</label>
                     </div>
 
-                    <div>
+                    {/* <div>
                         <input type="radio" name="as-hw" id="abyss-shriek" defaultChecked />
                         <label htmlFor="abyss-shriek">Abyss Shriek</label>
                         <input type="radio" name="as-hw" id="howling-wraiths" />
+                        <label htmlFor="howling-wraiths">Howling Wraiths</label>
+                    </div> */}
+                    <div>
+                        <input
+                            type="radio"
+                            name="as-hw"
+                            id="abyss-shriek"
+                            value={80}
+                            onChange={(e) => {
+                                setBaseShriekDamage(parseInt(e.target.value));
+                            }}
+                            checked={baseShriekDamage === 80}
+                        />
+                        <label htmlFor="abyss-shriek">Abyss Shriek</label>
+                        <input
+                            type="radio"
+                            name="as-hw"
+                            id="howling-wraiths"
+                            value={39}
+                            onChange={(e) => {
+                                setBaseShriekDamage(parseInt(e.target.value));
+                            }}
+                            checked={baseShriekDamage === 39}
+                        />
                         <label htmlFor="howling-wraiths">Howling Wraiths</label>
                     </div>
                 </div>

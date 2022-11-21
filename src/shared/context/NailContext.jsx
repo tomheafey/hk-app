@@ -10,7 +10,7 @@ const NailContext = createContext();
 export const useNailContext = () => useContext(NailContext);
 
 export function NailProvider(props) {
-    const [nailDamage, setNailDamage] = useState(21);
+    const [baseNailDamage, setBaseNailDamage] = useState(21);
 
-    return <NailContext.Provider value={{ nailDamage, setNailDamage }}>{props.children}</NailContext.Provider>;
+    return <NailContext.Provider value={{ baseNailDamage, setBaseNailDamage }}>{props.children}</NailContext.Provider>;
 }

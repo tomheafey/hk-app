@@ -20,19 +20,23 @@ import React from "react";
 import { useCharmContext } from "../context/CharmContext";
 import { useHPContext } from "../context/HPContext";
 import { useNailContext } from "../context/NailContext";
+import { useSpellsContext } from "../context/SpellsContext";
+import calculateNailDamage from "../functions/calculateNailDamage";
+import { calculateFireballDamage, calculateDiveDamage, calculateShriekDamage } from "../functions/calculateSpellDamage";
 
 const InfoPanel = () => {
     const { charms } = useCharmContext();
-    const { nailDamage } = useNailContext();
+    const { baseNailDamage } = useNailContext();
     const { baseHP } = useHPContext();
+    const { baseFireballDamage, baseDiveDamage, baseShriekDamage } = useSpellsContext();
 
     return (
         <>
             <div>HP: {baseHP}</div>
-            <div>NAIL DAMAGE: {nailDamage}</div>
-            <div>VS/SS DAMAGE</div>
-            <div>DD/DD DAMAGE</div>
-            <div>AS/HW DAMAGE</div>
+            <div>NAIL DAMAGE: {calculateNailDamage(baseNailDamage, charms)}</div>
+            <div>VS/SS DAMAGE: {calculateFireballDamage(baseFireballDamage, charms)}</div>
+            <div>DD/DD DAMAGE: {calculateDiveDamage(baseDiveDamage, charms)}</div>
+            <div>AS/HW DAMAGE: {calculateShriekDamage(baseShriekDamage, charms)}</div>
             {charms.map((c) => {
                 return <div key={c.id}>{c.effectText}</div>;
             })}
