@@ -14,13 +14,14 @@
 //  nail art charge time
 //  dreamnail speed
 
-//need to figure out how to handle charm interactions
+//TODO: figure out how to handle charm interactions
 
 import React from "react";
 import { useCharmContext } from "../context/CharmContext";
 import { useHPContext } from "../context/HPContext";
 import { useNailContext } from "../context/NailContext";
 import { useSpellsContext } from "../context/SpellsContext";
+import calculateHP from "../functions/calculateHP";
 import calculateNailDamage from "../functions/calculateNailDamage";
 import { calculateFireballDamage, calculateDiveDamage, calculateShriekDamage } from "../functions/calculateSpellDamage";
 
@@ -32,7 +33,7 @@ const InfoPanel = () => {
 
     return (
         <>
-            <div>HP: {baseHP}</div>
+            <div>HP: {calculateHP(baseHP, charms)}</div>
             <div>NAIL DAMAGE: {calculateNailDamage(baseNailDamage, charms)}</div>
             <div>VS/SS DAMAGE: {calculateFireballDamage(baseFireballDamage, charms)}</div>
             <div>DD/DD DAMAGE: {calculateDiveDamage(baseDiveDamage, charms)}</div>

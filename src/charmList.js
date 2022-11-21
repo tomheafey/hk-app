@@ -41,13 +41,6 @@ export const masterCharmList = [
         flavorText: "Said to contain the knowledge of past generations of shaman. Increases the power of spells, dealing more damage to foes.",
         effectText:
             "Increases Vengeful Spirit/Shade Soul damage by 33%. Increases Desolate Dive damage by 51% and Descending Dark damage by 47%. Increases Howling Wraiths/Abyss Shriek damage by 50%. Increases the size of Vengeful Spirit/Shade Soul. [The width of the projectile is increased by 30% and the height by 60%.]",
-        vSDmg: 0.33,
-        sSDmg: 0.33,
-        dDiveDmg: 0.51,
-        dDarkDmg: 0.47,
-        hWDmg: 0.5,
-        aSDmg: 0.5,
-        vSsSSizeIncr: true,
     },
     {
         id: "soulEater",
@@ -109,7 +102,6 @@ export const masterCharmList = [
         notches: 2,
         flavorText: "Increases the health of the bearer, allowing them to take more damage. This charm is unbreakable.",
         effectText: "Adds two Masks of health",
-        maskInc: 2,
     },
     // {
     //     id: "fragileGreed",
@@ -145,7 +137,6 @@ export const masterCharmList = [
         flavorText: "Strengthens the bearer, increasing the damage they deal to enemies with their nail. This charm is unbreakable.",
         effectText:
             "Increases Nail damage by 50%[The damage is rounded to the nearest integer, or to the nearest even integer if halfway between two. This results in 8/14/20/26/32 damage at Nail upgrades 0/1/2/3/4.]",
-        nailDmg: 0.5,
     },
     {
         id: "spellTwister",
@@ -180,7 +171,6 @@ export const masterCharmList = [
         flavorText: "Born from imperfect, discarded nails that have fused together. The nails still long to be wielded.Allows the bearer to slash much more rapidly with their nail.",
         effectText:
             "Decreases Nail attack duration (How long the hitbox is active) by 20% [Without any Charms, attack duration is 0.35 seconds. With Quick Slash, it is 0.28 seconds.]. Decreases Nail attack cooldown (Total time between attacks) by ~39%. [Without any Charms, attack cooldown is 0.41 seconds. With Quick Slash, it is 0.25 seconds.]",
-        //! slash speed
     },
     {
         id: "longnail",
@@ -189,7 +179,6 @@ export const masterCharmList = [
         notches: 2,
         flavorText: "Increases the range of the bearer's nail, allowing them to strike foes from further away.",
         effectText: "Increases Nail range by 15% [Does not affect the range of Nail attacks made while wall-sliding.]",
-        nailLength: 0.15,
     },
     {
         id: "markOfPride",
@@ -198,7 +187,6 @@ export const masterCharmList = [
         notches: 3,
         flavorText: "Freely given by the Mantis Tribe to those they respect.Greatly increases the range of the bearer's nail, allowing them to strike foes from further away.",
         effectText: "Increases Nail range by 25% [Does not affect the range of Nail attacks made while wall-sliding.]",
-        nailLength: 0.25,
     },
     {
         id: "furyOfTheFallen",
@@ -277,7 +265,6 @@ export const masterCharmList = [
         flavorText:
             "Contains a living core that seeps precious lifeblood.When resting, the bearer will gain a coating of lifeblood that protects from a modest amount of damage. (Sitting at a bench grants 2 temporary bonus Masks.)",
         effectText: "Adds 2 Lifeblood Masks when resting.",
-        lbMasks: 2,
     },
     {
         id: "lifebloodCore",
@@ -287,7 +274,6 @@ export const masterCharmList = [
         flavorText:
             "Contains a living core that bleeds precious lifeblood.When resting, the bearer will gain a coating of lifeblood that protects from a large amount of damage. (Sitting at a bench grants 4 temporary bonus Masks.)",
         effectText: "Adds 4 Lifeblood Masks when resting.",
-        lbMasks: 4,
     },
     {
         id: "jonisBlessing",
@@ -298,7 +284,6 @@ export const masterCharmList = [
             "Blessed by Joni, the kindly heretic. Transfigures vital fluids into blue lifeblood.The bearer will have a healthier shell and can take more damage, but they will not be able to heal themselves by focusing Soul.",
         effectText:
             "Increase Masks by 40% (rounded up), all Masks become Lifeblood. Causes Lifeseeds to flock to the Knight instead of running away. ***The 40% increase in Masks granted by Joni's Blessing only takes into account the base Masks and the two Masks added by Fragile/Grimm Troupe content Unbreakable Heart. Masks added by Lifeblood Heart and Lifeblood Core are not included in the calculation.***",
-        joniMaskIncr: 0.4,
     },
     {
         id: "hiveblood",
