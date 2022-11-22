@@ -2,10 +2,12 @@ import React from "react";
 import { Tooltip } from "@mui/material";
 import styled from "@emotion/styled";
 
+//TODO: may need to let mobile user know to tap+hold for tooltip
+
 const CharmDisplay = ({ charm, handleClick }) => {
     return (
         <Div onClick={(e) => handleClick(charm)}>
-            <Tooltip title={<TooltipDisplay charm={charm} />}>
+            <Tooltip enterTouchDelay={500} disableFocusListener title={<TooltipDisplay charm={charm} />}>
                 <div>
                     {charm.name}
                     <br />

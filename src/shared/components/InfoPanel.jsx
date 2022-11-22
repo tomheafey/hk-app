@@ -16,7 +16,7 @@
 
 //TODO: figure out how to handle charm interactions
 
-import React from "react";
+import React, { useMemo } from "react";
 import { useCharmContext } from "../context/CharmContext";
 import { useHPContext } from "../context/HPContext";
 import { useNailContext } from "../context/NailContext";
@@ -24,12 +24,17 @@ import { useSpellsContext } from "../context/SpellsContext";
 import calculateHP from "../functions/calculateHP";
 import calculateNailDamage from "../functions/calculateNailDamage";
 import { calculateFireballDamage, calculateDiveDamage, calculateShriekDamage } from "../functions/calculateSpellDamage";
+import charmSynergies from "../functions/charmSynergies";
 
 const InfoPanel = () => {
     const { charms } = useCharmContext();
     const { baseNailDamage } = useNailContext();
     const { baseHP } = useHPContext();
     const { baseFireballDamage, baseDiveDamage, baseShriekDamage } = useSpellsContext();
+
+    const synergies = useMemo(() => {
+        return charmSynergies(charms);
+    }, [charms]);
 
     return (
         <>
@@ -45,6 +50,10 @@ const InfoPanel = () => {
             <div>AS/HW DAMAGE: {calculateShriekDamage(baseShriekDamage, charms)}</div>
             {charms.map((c) => {
                 return <div key={c.id}>{c.effectText}</div>;
+            })}
+            <div>SYNERGIES</div>
+            {synergies.map((s, idx) => {
+                return <div key={idx}>{s}</div>;
             })}
         </>
     );
