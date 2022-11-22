@@ -12,7 +12,6 @@
 //should DEFAULT everything to 112% completion status
 
 //TODO: create functional components for dropdowns and radio groups
-//TODO: deal with changing notches total if charms already equipped
 
 import React, { useEffect, useState } from "react";
 import { useCharmContext } from "../context/CharmContext";
@@ -21,11 +20,12 @@ import { useHPContext } from "../context/HPContext";
 import { useNailContext } from "../context/NailContext";
 import { useNotchesContext } from "../context/NotchesContext";
 import { useSpellsContext } from "../context/SpellsContext";
+import { voidHeart } from "../../charmList";
 
 const OptionsMenu = () => {
     const { setBaseNailDamage } = useNailContext();
     const { baseHP, setBaseHP } = useHPContext();
-    const { charms, removeCharm } = useCharmContext();
+    const { charms, removeCharm, addCharm, clearCharms } = useCharmContext();
     const { notchTotal, setNotchTotal } = useNotchesContext();
     const { baseFireballDamage, setBaseFireballDamage, baseDiveDamage, setBaseDiveDamage, baseShriekDamage, setBaseShriekDamage } = useSpellsContext();
     const { hasVoidHeart, setHasVoidHeart, hasCarefreeMelody, setHasCarefreeMelody } = useCharmTogglesContext();
@@ -33,9 +33,14 @@ const OptionsMenu = () => {
     const [nailLevel, setNailLevel] = useState("pure");
     const [isHidden, setIsHidden] = useState(false);
 
-    //TODO: if user changes carefree/grimm or void/king AND user has one equipped, clear charms out or at least remove it
+    //deal with changing notches total if charms already equipped
+    function handleNotchToggle(e) {
+        clearCharms();
+        setNotchTotal(e.target.value);
+    }
+
+    //if user changes carefree/grimm or void/king AND user has one equipped, clear charms out or at least remove it
     function handleCharmToggles(e) {
-        console.log(e.target.value);
         if (e.target.value === "carefreeMelody") {
             removeCharm("grimmchild");
             setHasCarefreeMelody(true);
@@ -53,6 +58,13 @@ const OptionsMenu = () => {
             setHasVoidHeart(false);
         }
     }
+
+    //automatically adds void heart if that radio is selected
+    useEffect(() => {
+        if (hasVoidHeart && !charms.some((c) => c.id === "voidHeart")) {
+            addCharm(voidHeart);
+        }
+    }, [hasVoidHeart]);
 
     useEffect(() => {
         switch (nailLevel) {
@@ -109,7 +121,7 @@ const OptionsMenu = () => {
                     </select>
 
                     <label htmlFor="base-hp">Base Masks</label>
-                    <select id="base-hp" value={baseHP} onChange={(e) => setBaseHP(e.target.value)}>
+                    <select id="base-hp" value={baseHP} onChange={(e) => setBaseHP(parseInt(e.target.value))}>
                         {hpOptions.map((opt) => (
                             <option key={opt.val} value={opt.val}>
                                 {opt.label}
@@ -118,7 +130,7 @@ const OptionsMenu = () => {
                     </select>
 
                     <label htmlFor="notches">Notches</label>
-                    <select id="notches" value={notchTotal} onChange={(e) => setNotchTotal(e.target.value)}>
+                    <select id="notches" value={notchTotal} onChange={(e) => handleNotchToggle(e)}>
                         {notchOptions.map((opt) => (
                             <option key={opt.val} value={opt.val}>
                                 {opt.label}

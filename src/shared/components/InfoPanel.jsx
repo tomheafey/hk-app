@@ -33,7 +33,12 @@ const InfoPanel = () => {
 
     return (
         <>
-            <div>HP: {calculateHP(baseHP, charms)}</div>
+            <div>
+                HP:{" "}
+                {calculateHP(baseHP, charms).map((m, idx) => (
+                    <span key={idx}>{m} </span>
+                ))}
+            </div>
             <div>NAIL DAMAGE: {calculateNailDamage(baseNailDamage, charms)}</div>
             <div>VS/SS DAMAGE: {calculateFireballDamage(baseFireballDamage, charms)}</div>
             <div>DD/DD DAMAGE: {calculateDiveDamage(baseDiveDamage, charms)}</div>

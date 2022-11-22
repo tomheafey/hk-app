@@ -26,60 +26,62 @@ const CharmSelector = () => {
         return;
     }, [charms]);
 
-    // const notchCount = useMemo(() => {
-    //     let count = 0;
-    //     charms.forEach((c) => (count += c.notches));
-    //     console.log(count);
-    //     return count;
-    // }, [charms]);
-
     function handleCharmClick(charm) {
-        //TODO: logic for preventing add at notch max
+        //if voidheart is in the charm pool, should never be able to be added/removed
+        if (charm.id !== "voidHeart") {
+            if (charms.find((c) => c.id === charm.id)) {
+                removeCharm(charm.id);
+                return;
+            }
 
-        if (charms.find((c) => c.id === charm.id)) {
-            removeCharm(charm.id);
-            return;
+            //if enough notches available, just add
+            if (notchCount + charm.notches <= notchTotal) {
+                addCharm(charm);
+                return;
+            }
+
+            //if notch available do overcharm logic
+            if (notchCount < notchTotal) {
+                addCharm(charm);
+                return;
+            }
+
+            if (notchCount >= notchTotal) {
+                //! if already at max or overcharmed, do nothing
+                //! possibly add indication
+            }
         }
-
-        //if enough notches available, just add
-        if (notchCount + charm.notches <= notchTotal) {
-            addCharm(charm);
-            return;
-        }
-
-        //if notch available do overcharm logic
-        if (notchCount < notchTotal) {
-            //TODO: figure out how to handle overcharming
-            addCharm(charm);
-            return;
-        }
-
-        if (notchCount >= notchTotal) {
-            //! if already at max or overcharmed, do nothing
-            //! possibly add indication
-        }
-
         return;
     }
 
     return (
-        <CharmSelectionContainer>
-            {masterCharmList.map((charm) => {
-                return (
-                    <Div key={charm.id} onClick={(e) => handleCharmClick(charm)}>
-                        {charm.name}
-                        {/* <CharmDisplay charm={charm} /> */}
-                        <br />
-                        <br />
-                        {charm.notches}
-                    </Div>
-                );
-            })}
-            {hasCarefreeMelody && <Div onClick={(e) => handleCharmClick(carefreeMelody)}>{carefreeMelody.name}</Div>}
-            {!hasCarefreeMelody && <Div onClick={(e) => handleCharmClick(grimmchild)}>{grimmchild.name}</Div>}
-            {hasVoidHeart && <Div onClick={(e) => handleCharmClick(voidHeart)}>{voidHeart.name}</Div>}
-            {!hasVoidHeart && <Div onClick={(e) => handleCharmClick(kingsoul)}>{kingsoul.name}</Div>}
-        </CharmSelectionContainer>
+        <>
+            <CharmSelectionContainer>
+                {masterCharmList.map((charm) => {
+                    return <CharmDisplay key={charm.id} charm={charm} handleClick={handleCharmClick} />;
+                })}
+                {hasCarefreeMelody && (
+                    <CharmDisplay charm={carefreeMelody} handleClick={handleCharmClick}>
+                        {carefreeMelody.name}
+                    </CharmDisplay>
+                )}
+                {!hasCarefreeMelody && (
+                    <CharmDisplay charm={grimmchild} handleClick={handleCharmClick}>
+                        {grimmchild.name}
+                    </CharmDisplay>
+                )}
+                {hasVoidHeart && (
+                    <CharmDisplay charm={voidHeart} handleClick={handleCharmClick}>
+                        {voidHeart.name}
+                    </CharmDisplay>
+                )}
+                {!hasVoidHeart && (
+                    <CharmDisplay charm={kingsoul} handleClick={handleCharmClick}>
+                        {kingsoul.name}
+                    </CharmDisplay>
+                )}
+            </CharmSelectionContainer>
+        </>
     );
 };
 

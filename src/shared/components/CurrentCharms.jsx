@@ -17,7 +17,9 @@ const CurrentCharms = () => {
     const { notchTotal, notchesArray, notchCount, isOvercharmed } = useNotchesContext();
 
     function handleCharmClick(charm) {
-        removeCharm(charm.id);
+        if (charm.id !== "voidHeart") {
+            removeCharm(charm.id);
+        }
     }
 
     return (
