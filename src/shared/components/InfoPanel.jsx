@@ -49,7 +49,7 @@ const InfoPanel = () => {
             <div>DD/DD DAMAGE: {calculateDiveDamage(baseDiveDamage, charms)}</div>
             <div>AS/HW DAMAGE: {calculateShriekDamage(baseShriekDamage, charms)}</div>
             {charms.map((c) => {
-                return <div key={c.id}>{c.effectText}</div>;
+                return <div key={c.id}>{`${c.name}: ${c.effectText}`}</div>;
             })}
             <div>SYNERGIES</div>
             {synergies.map((s, idx) => {

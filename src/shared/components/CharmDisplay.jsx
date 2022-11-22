@@ -3,7 +3,7 @@ import { Tooltip } from "@mui/material";
 import styled from "@emotion/styled";
 
 //TODO: may need to let mobile user know to tap+hold for tooltip
-
+//TODO: play with settings so hover only works over element (not over the tooltip itself)
 const CharmDisplay = ({ charm, handleClick }) => {
     return (
         <Div onClick={(e) => handleClick(charm)}>

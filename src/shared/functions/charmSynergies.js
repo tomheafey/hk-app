@@ -7,6 +7,7 @@ export default function charmSynergies(charms) {
         "sharpShadow",
         "sprintmaster",
         "furyOfTheFallen",
+        "defendersCrest",
         "markOfPride",
         "glowingWomb",
         "grubberflysElegy",
@@ -14,10 +15,13 @@ export default function charmSynergies(charms) {
         "sporeShroom",
         "quickFocus",
         "deepFocus",
+        "grubsong",
         "jonisBlessing",
         "hiveblood",
         "weaversong",
         "nailmastersGlory",
+        "shapeOfUnn",
+        "dreamWielder",
         "dreamshield",
         "shamanStone",
     ];
@@ -29,6 +33,7 @@ export default function charmSynergies(charms) {
     charmsWithSynergy.forEach((x) => {
         if (charms.some((c) => c.id === x)) {
             equippedSynCharms.push(x);
+            console.log("syn: " + x);
         }
     });
 
@@ -73,8 +78,9 @@ export default function charmSynergies(charms) {
     if (equippedSynCharms.some((c) => c === "defendersCrest")) {
         //  + flukenest: repl flukes w/ 1 big fluke, 3 impact dmg, explodes into cloud that does 1dmg/tick for 23 ticks
         if (equippedSynCharms.some((c) => c === "flukenest")) {
+            console.log("fluke");
             synergyStrings.push(
-                "Defender's Crest + : Replaces the horde of flukes with one massive, volatile fluke that does 3 impact damage and explodes into a dung cloud that does 1 damage per tick for 23 ticks."
+                "Defender's Crest + Flukenest: Replaces the horde of flukes with one massive, volatile fluke that does 3 impact damage and explodes into a dung cloud that does 1 damage per tick for 23 ticks."
             );
         }
 
@@ -147,9 +153,11 @@ export default function charmSynergies(charms) {
     if (equippedSynCharms.some((c) => c === "flukenest")) {
         //  + shaman stone: incr size & damage of spell maggots
         if (equippedSynCharms.some((c) => c === "shamanStone")) {
-            synergyStrings.push("Flukenext + Shaman Stone: Increases the size and damage of the Vengeful Spirit/Shade Soul flukes.");
+            synergyStrings.push("Flukenest + Shaman Stone: Increases the size and damage of the Vengeful Spirit/Shade Soul flukes.");
         }
     }
+
+    //TODO: deep focus + quick focus?
 
     return synergyStrings;
 }
