@@ -8,31 +8,21 @@ export function calculateFireballDamage(baseDmg, charms) {
     return dmg;
 }
 
-export function calculateDiveDamage(baseDmg, charms) {
+export function calculateDiveDamage(baseDmg, charms, hasDescendingDark) {
     //+51% for desolate dive
     //+47% for descending dark
     //! seems to actually be ~1.354%
     let dmg = baseDmg;
     if (charms.some((c) => c.id === "shamanStone")) {
-        if (baseDmg === 35) {
-            dmg = 53;
-        } else {
-            dmg = 88;
-        }
+        dmg = hasDescendingDark ? 88 : 53;
     }
     return dmg;
 }
 
-export function calculateShriekDamage(baseDmg, charms) {
+export function calculateShriekDamage(baseDmg, charms, hasAbyssShriek) {
     let dmg = baseDmg;
     if (charms.some((c) => c.id === "shamanStone")) {
-        if (baseDmg === 39) {
-            //weird rounding issue - it's 3 waves of 13, so 39 total becomes
-            //60 even with shaman stone
-            dmg = 60;
-        } else {
-            dmg = 120;
-        }
+        dmg = hasAbyssShriek ? 120 : 60;
     }
     return dmg;
 }

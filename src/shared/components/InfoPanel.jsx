@@ -30,7 +30,7 @@ const InfoPanel = () => {
     const { charms } = useCharmContext();
     const { baseNailDamage } = useNailContext();
     const { baseHP } = useHPContext();
-    const { baseFireballDamage, baseDiveDamage, baseShriekDamage } = useSpellsContext();
+    const { baseFireballDamage, baseDiveDamage, baseShriekDamage, hasShadeSoul, hasDescendingDark, hasAbyssShriek } = useSpellsContext();
 
     const synergies = useMemo(() => {
         return charmSynergies(charms);
@@ -47,10 +47,28 @@ const InfoPanel = () => {
                 </MasksContainer>
             </MaskInfoContainer>
 
-            <div>NAIL DAMAGE: {calculateNailDamage(baseNailDamage, charms)}</div>
-            <div>VS/SS DAMAGE: {calculateFireballDamage(baseFireballDamage, charms)}</div>
-            <div>DD/DD DAMAGE: {calculateDiveDamage(baseDiveDamage, charms)}</div>
-            <div>AS/HW DAMAGE: {calculateShriekDamage(baseShriekDamage, charms)}</div>
+            <DamageInfoContainer>
+                <Table>
+                    <tr>
+                        <TDLabel>Nail Damage: </TDLabel>
+                        <TDData>{calculateNailDamage(baseNailDamage, charms)}</TDData>
+                    </tr>
+
+                    <tr>
+                        <TDLabel>Fireball Damage: </TDLabel>
+                        <TDData>{calculateFireballDamage(baseFireballDamage, charms, hasShadeSoul)}</TDData>
+                    </tr>
+                    <tr>
+                        <TDLabel>Dive Damage: </TDLabel>
+                        <TDData>{calculateDiveDamage(baseDiveDamage, charms, hasDescendingDark)}</TDData>
+                    </tr>
+                    <tr>
+                        <TDLabel>Yell Damage: </TDLabel>
+                        <TDData>{calculateShriekDamage(baseShriekDamage, charms, hasAbyssShriek)}</TDData>
+                    </tr>
+                </Table>
+            </DamageInfoContainer>
+
             {charms.map((c) => {
                 return <div key={c.id}>{`${c.name}: ${c.effectText}`}</div>;
             })}
@@ -63,6 +81,19 @@ const InfoPanel = () => {
 };
 
 export default InfoPanel;
+
+const DamageInfoContainer = styled("div")((props) => ({
+    marginLeft: "25px",
+}));
+
+const Table = styled("table")((props) => ({}));
+
+const TDLabel = styled("td")((props) => ({
+    textAlign: "right",
+}));
+const TDData = styled("td")((props) => ({
+    textAlign: "left",
+}));
 
 const MaskInfoContainer = styled("div")((props) => ({
     display: "flex",

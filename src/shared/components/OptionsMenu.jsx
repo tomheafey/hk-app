@@ -24,7 +24,7 @@ const OptionsMenu = () => {
     const { baseHP, setBaseHP } = useHPContext();
     const { charms, removeCharm, addCharm, clearCharms } = useCharmContext();
     const { notchTotal, setNotchTotal } = useNotchesContext();
-    const { baseFireballDamage, setBaseFireballDamage, baseDiveDamage, setBaseDiveDamage, baseShriekDamage, setBaseShriekDamage } = useSpellsContext();
+    const { hasShadeSoul, hasDescendingDark, hasAbyssShriek, baseFireballDamage, baseDiveDamage, baseShriekDamage, setHasShadeSoul, setHasDescendingDark, setHasAbyssShriek } = useSpellsContext();
     const { hasVoidHeart, setHasVoidHeart, hasCarefreeMelody, setHasCarefreeMelody } = useCharmTogglesContext();
 
     const [nailLevel, setNailLevel] = useState("pure");
@@ -103,8 +103,8 @@ const OptionsMenu = () => {
         notchOptions.push({ val: i, label: i.toString() });
     }
 
-    const [testState, setTestState] = useState("1");
-    console.log(testState);
+    // const [testState, setTestState] = useState("1");
+    // console.log(testState);
     //TODO: use MUI for alternatives to radios
     //! abandoning this for now - for some reason bg from index.css is overriding the styled button & buttongroup
     return (
@@ -213,65 +213,48 @@ const OptionsMenu = () => {
                         <label htmlFor="kingsoul">Kingsoul</label>
                     </div>
 
-                    {/* <div>
-                        <input type="radio" name="ss-vs" id="shade-soul" defaultChecked />
-                        <label htmlFor="shade-soul">Shade Soul</label>
-                        <input type="radio" name="ss-vs" id="vengeful-spirit" />
-                        <label htmlFor="vengeful-spirit">Vengeful Spirit</label>
-                    </div> */}
-
                     <div>
                         <input
                             type="radio"
                             name="ss-vs"
                             id="shade-soul"
-                            value={30}
                             onChange={(e) => {
-                                setBaseFireballDamage(parseInt(e.target.value));
+                                setHasShadeSoul(!hasShadeSoul);
                             }}
-                            checked={baseFireballDamage === 30}
+                            checked={hasShadeSoul}
                         />
                         <label htmlFor="shade-soul">Shade Soul</label>
                         <input
                             type="radio"
                             name="ss-vs"
                             id="vengeful-spirit"
-                            value={15}
                             onChange={(e) => {
-                                setBaseFireballDamage(parseInt(e.target.value));
+                                setHasShadeSoul(!hasShadeSoul);
                             }}
-                            checked={baseFireballDamage === 15}
+                            checked={!hasShadeSoul}
                         />
                         <label htmlFor="vengeful-spirit">Vengeful Spirit</label>
                     </div>
 
-                    {/* <div>
-                        <input type="radio" name="dd-dd" id="descending-dark" defaultChecked />
-                        <label htmlFor="descending-dark">Descending Dark</label>
-                        <input type="radio" name="dd-dd" id="desolate-dive" />
-                        <label htmlFor="desolate-dive">Desolate Dive</label>
-                    </div> */}
                     <div>
                         <input
                             type="radio"
                             name="dd-dd"
                             id="descending-dark"
-                            value={65}
                             onChange={(e) => {
-                                setBaseDiveDamage(parseInt(e.target.value));
+                                setHasDescendingDark(!hasDescendingDark);
                             }}
-                            checked={baseDiveDamage === 65}
+                            checked={hasDescendingDark}
                         />
                         <label htmlFor="descending-dark">Descending Dark</label>
                         <input
                             type="radio"
                             name="dd-dd"
                             id="desolate-dive"
-                            value={35}
                             onChange={(e) => {
-                                setBaseDiveDamage(parseInt(e.target.value));
+                                setHasDescendingDark(!hasDescendingDark);
                             }}
-                            checked={baseDiveDamage === 35}
+                            checked={!hasDescendingDark}
                         />
                         <label htmlFor="desolate-dive">Desolate Dive</label>
                     </div>
@@ -287,22 +270,20 @@ const OptionsMenu = () => {
                             type="radio"
                             name="as-hw"
                             id="abyss-shriek"
-                            value={80}
                             onChange={(e) => {
-                                setBaseShriekDamage(parseInt(e.target.value));
+                                setHasAbyssShriek(!hasAbyssShriek);
                             }}
-                            checked={baseShriekDamage === 80}
+                            checked={hasAbyssShriek}
                         />
                         <label htmlFor="abyss-shriek">Abyss Shriek</label>
                         <input
                             type="radio"
                             name="as-hw"
                             id="howling-wraiths"
-                            value={39}
                             onChange={(e) => {
-                                setBaseShriekDamage(parseInt(e.target.value));
+                                setHasAbyssShriek(!hasAbyssShriek);
                             }}
-                            checked={baseShriekDamage === 39}
+                            checked={!hasAbyssShriek}
                         />
                         <label htmlFor="howling-wraiths">Howling Wraiths</label>
                     </div>
