@@ -9,22 +9,9 @@ const overcharmNotch = require("../images/overcharmed notch.png");
 //TODO: why am i not just grabbing screenshots from in the actual game
 
 const NotchDisplay = ({ notchesArray }) => {
-    let disp = [];
-    for (let i = 0; i < notchesArray.length; i++) {
-        if (notchesArray[i] === "O") {
-            disp.push(emptyNotch);
-        }
-        if (notchesArray[i] === "c") {
-            disp.push(fullNotch);
-        }
-
-        if (notchesArray[i] === "!") {
-            disp.push(overcharmNotch);
-        }
-    }
     return (
         <>
-            {disp.map((n, idx) => (
+            {notchesArray.map((n, idx) => (
                 <img key={idx} src={n} />
             ))}
         </>
