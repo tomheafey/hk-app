@@ -17,6 +17,8 @@ export function NotchesProvider(props) {
         notchCount > notchTotal ? setIsOvercharmed(true) : setIsOvercharmed(false);
     }, [notchCount]);
 
+    //TODO: make this less hacky, or at least rename temp
+    //TODO: probably a better method than using these strings to represent different types of notches
     useEffect(() => {
         let temp = [];
         if (isOvercharmed) {

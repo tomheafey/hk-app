@@ -14,8 +14,6 @@
 //  nail art charge time
 //  dreamnail speed
 
-//TODO: figure out how to handle charm interactions
-
 import React, { useMemo } from "react";
 import { useCharmContext } from "../context/CharmContext";
 import { useHPContext } from "../context/HPContext";

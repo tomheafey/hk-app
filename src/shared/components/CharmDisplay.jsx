@@ -3,20 +3,23 @@ import { Tooltip } from "@mui/material";
 import styled from "@emotion/styled";
 
 //TODO: may need to let mobile user know to tap+hold for tooltip
-//TODO: play with settings so hover only works over element (not over the tooltip itself)
+//TODO: play with click vs tap settings - don't want it to disappear too quickly for mobile users
+//elements have a touchstart event that may help
+
+//TODO: splitout TooltipDisplay into its own file
+//TODO: show actual images of notches instead of the number
+//TODO: see how it looks with italicized flavor text
+
+//{/* <img src={require(`../images/${charm.pngName}.png`)} /> */}
 const CharmDisplay = ({ charm, handleClick }) => {
     return (
-        <Div onClick={(e) => handleClick(charm)}>
-            <Tooltip enterTouchDelay={500} disableFocusListener title={<TooltipDisplay charm={charm} />}>
-                <div>
-                    {charm.name}
-                    <br />
-                    <br />
-                    {charm.notches}
-                </div>
-            </Tooltip>
-            {/* <img src={require(`../images/${charm.pngName}.png`)} /> */}
-        </Div>
+        <Tooltip enterTouchDelay={500} TransitionProps={{}} disableInteractive disableFocusListener title={<TooltipDisplay charm={charm} />}>
+            <Div onTouchStart={(e) => e.stopPropagation()} onClick={(e) => handleClick(charm)}>
+                <Img src={require(`../images/${charm.pngName}.png`)} />
+                <br />
+                <i>{charm.name}</i>
+            </Div>
+        </Tooltip>
     );
 };
 
@@ -31,8 +34,11 @@ const TooltipDisplay = ({ charm }) => {
     return (
         <>
             <h3>{charm.name}</h3>
-            <h2>{charm.notches}</h2>
+            <h3>{charm.notches}</h3>
             <div>{charm.effectText}</div>
+            <br />
+            <br />
+            <i>{charm.flavorText}</i>
         </>
     );
 };
@@ -41,7 +47,12 @@ const Div = styled("span")((props) => ({
     border: "1px solid black",
     textAlign: "center",
     overflowWrap: "break-word",
-    fontSize: "12px",
+    fontSize: "10px",
     height: "75px",
     width: "75px",
+}));
+
+const Img = styled("img")((props) => ({
+    marginTop: "2px",
+    height: "50px",
 }));

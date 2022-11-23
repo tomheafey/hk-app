@@ -1,5 +1,4 @@
-//TODO: return array with charm synergies to be displayed in the info panel
-//TODO: handle overwriting certain standard charm effects somehow
+//TODO (maybe): handle overwriting certain standard charm effects somehow
 
 export default function charmSynergies(charms) {
     const charmsWithSynergy = [
@@ -33,7 +32,6 @@ export default function charmSynergies(charms) {
     charmsWithSynergy.forEach((x) => {
         if (charms.some((c) => c.id === x)) {
             equippedSynCharms.push(x);
-            console.log("syn: " + x);
         }
     });
 
@@ -78,7 +76,6 @@ export default function charmSynergies(charms) {
     if (equippedSynCharms.some((c) => c === "defendersCrest")) {
         //  + flukenest: repl flukes w/ 1 big fluke, 3 impact dmg, explodes into cloud that does 1dmg/tick for 23 ticks
         if (equippedSynCharms.some((c) => c === "flukenest")) {
-            console.log("fluke");
             synergyStrings.push(
                 "Defender's Crest + Flukenest: Replaces the horde of flukes with one massive, volatile fluke that does 3 impact damage and explodes into a dung cloud that does 1 damage per tick for 23 ticks."
             );
@@ -158,6 +155,7 @@ export default function charmSynergies(charms) {
     }
 
     //TODO: deep focus + quick focus?
+    //Without any Charms, and ignoring the 0.25 second startup time, it takes 0.891 seconds to Focus. With Quick Focus, it takes 0.594 seconds. With both Deep Focus and Quick Focus, it takes 0.9801 seconds.]
 
     return synergyStrings;
 }

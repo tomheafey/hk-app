@@ -1,17 +1,12 @@
-//probably a better name for this
 //! may want to move this onto an 'intro page' to not clutter the main page
 
-//select nail level
-//radios? for
-//  kingsoul vs voidheart
-//  grimm vs carefree
-//possibly radios for
-//  vengeful spirit vs shade soul
-//  desolate dive vs descending dark
-//  howling wraiths vs abyss shriek
 //should DEFAULT everything to 112% completion status
+//TODO: break this off into an 'intro' page, set up routing for "/intro" (or whatever) and "/main"
 
 //TODO: create functional components for dropdowns and radio groups
+//TODO (maybe): replace option buttons with some kind of prettier MUI component
+//TODO (maybe): images of diff nails in nail level dropdown
+//TODO (maybe): images of spells for spell toggles
 
 import React, { useEffect, useState } from "react";
 import { useCharmContext } from "../context/CharmContext";

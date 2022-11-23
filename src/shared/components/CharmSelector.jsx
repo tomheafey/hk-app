@@ -6,13 +6,11 @@ import CharmDisplay from "./CharmDisplay";
 import { useNotchesContext } from "../context/NotchesContext";
 import { useCharmTogglesContext } from "../context/CharmTogglesContext";
 
-//grid with all 40some charms
-//hover gives popup with info?
-//would need to implement something for mobile
-//tap once acts as hover
-//tap twice acts as click
-
 //! using lazy method of swapping out grimm/cf & void/kingsoul
+
+//TODO: figure out logic for dulling out charm when it's currently selected (turn down alpha or something?)
+//TODO: add glowy background to selected charms (the ones that are dulled out)
+//TODO (maybe): animation when equipping/unequipping charms
 
 const CharmSelector = () => {
     const { charms, addCharm, removeCharm } = useCharmContext();

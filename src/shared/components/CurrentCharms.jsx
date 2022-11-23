@@ -6,11 +6,16 @@
 //replace slot with empty slot image
 //remove from state
 
+//TODO: create component for displaying notches (empty, taken, overcharmed) - in game, it shows charms plus available notches after it
+//TODO: split out charmselectioncontainer and styled div - these are copied over into CharmDisplay
+//TODO: use CharmDisplay component here?
+
 import { useCharmContext } from "../context/CharmContext";
 
 import React from "react";
 import styled from "@emotion/styled";
 import { useNotchesContext } from "../context/NotchesContext";
+import NotchDisplay from "./NotchDisplay";
 
 const CurrentCharms = () => {
     const { charms, removeCharm } = useCharmContext();
@@ -27,9 +32,10 @@ const CurrentCharms = () => {
             <div>
                 {isOvercharmed && <div>OVERCHARMED</div>}
                 NOTCHES:
-                {notchesArray.map((n, idx) => (
+                <NotchDisplay notchesArray={notchesArray} />
+                {/* {notchesArray.map((n, idx) => (
                     <span key={idx}>{n}</span>
-                ))}
+                ))} */}
             </div>
             <CharmSelectionContainer>
                 {charms.map((charm) => {
