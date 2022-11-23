@@ -19,7 +19,7 @@ import { useCharmContext } from "../context/CharmContext";
 import { useHPContext } from "../context/HPContext";
 import { useNailContext } from "../context/NailContext";
 import { useSpellsContext } from "../context/SpellsContext";
-import calculateHP from "../functions/calculateHP";
+import generateHPImageArray from "../functions/calculateHP";
 import calculateNailDamage from "../functions/calculateNailDamage";
 import { calculateFireballDamage, calculateDiveDamage, calculateShriekDamage } from "../functions/calculateSpellDamage";
 import charmSynergies from "../functions/charmSynergies";
@@ -38,8 +38,8 @@ const InfoPanel = () => {
         <>
             <div>
                 HP:{" "}
-                {calculateHP(baseHP, charms).map((m, idx) => (
-                    <span key={idx}>{m} </span>
+                {generateHPImageArray(baseHP, charms).map((m, idx) => (
+                    <img key={idx} src={m} />
                 ))}
             </div>
             <div>NAIL DAMAGE: {calculateNailDamage(baseNailDamage, charms)}</div>

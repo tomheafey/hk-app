@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 const fullNotch = require("../images/full notch.png");
-const emptyNotch = require("../images/empty notch.png");
+const emptyNotch = require("../images/empty notch hq transparent.png");
 const overcharmNotch = require("../images/overcharmed notch.png");
 const NotchesContext = createContext();
 
