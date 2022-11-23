@@ -9,6 +9,23 @@ import { HPProvider } from "./shared/context/HPContext";
 import { NotchesProvider } from "./shared/context/NotchesContext";
 import { SpellsProvider } from "./shared/context/SpellsContext";
 import { CharmTogglesProvider } from "./shared/context/CharmTogglesContext";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+
+const theme = createTheme({
+    components: {
+        MuiToggleButton: {
+            styleOverrides: {
+                root: {
+                    "&.Mui-selected": {
+                        backgroundColor: "black",
+                        color: "white",
+                    },
+                    "&:hover": {},
+                },
+            },
+        },
+    },
+});
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,7 +35,9 @@ root.render(
                 <NotchesProvider>
                     <SpellsProvider>
                         <CharmTogglesProvider>
-                            <App />
+                            <ThemeProvider theme={theme}>
+                                <App />
+                            </ThemeProvider>
                         </CharmTogglesProvider>
                     </SpellsProvider>
                 </NotchesProvider>

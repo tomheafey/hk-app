@@ -16,6 +16,8 @@ import { useNailContext } from "../context/NailContext";
 import { useNotchesContext } from "../context/NotchesContext";
 import { useSpellsContext } from "../context/SpellsContext";
 import { voidHeart } from "../../charmList";
+import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import styled from "@emotion/styled";
 
 const OptionsMenu = () => {
     const { setBaseNailDamage } = useNailContext();
@@ -100,8 +102,20 @@ const OptionsMenu = () => {
     for (let i = 11; i >= 3; i--) {
         notchOptions.push({ val: i, label: i.toString() });
     }
+
+    const [testState, setTestState] = useState("1");
+    console.log(testState);
+    //TODO: use MUI for alternatives to radios
+    //! abandoning this for now - for some reason bg from index.css is overriding the styled button & buttongroup
     return (
         <>
+            {/* <StyledToggleButtonGroup sx={{ backgroundColor: "blue", borderColor: "green" }} value={testState} exclusive onChange={(e) => setTestState(e.target.value)}>
+                <StyledToggleButton sx={{ color: "red" }} value={1}>
+                    test1
+                </StyledToggleButton>
+                <StyledToggleButton value={2}>test2</StyledToggleButton>
+            </StyledToggleButtonGroup> */}
+
             <button onClick={(e) => setIsHidden(!isHidden)}>{isHidden ? "unhide" : "hide"} options</button>
             {!isHidden && (
                 <div>
@@ -299,3 +313,17 @@ const OptionsMenu = () => {
 };
 
 export default OptionsMenu;
+
+const StyledToggleButtonGroup = styled(ToggleButtonGroup)(() => ({
+    // color: "red",
+    // backgroundColor: "black",
+    // border: "1px solid white",
+}));
+
+const StyledToggleButton = styled(ToggleButton)(() => ({
+    // backgroundColor: "blue",
+    // color: "red",
+    // color: "red",
+    // backgroundColor: "black",
+    // border: "1px solid white",
+}));

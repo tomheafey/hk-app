@@ -14,6 +14,7 @@
 //  nail art charge time
 //  dreamnail speed
 
+import styled from "@emotion/styled";
 import React, { useMemo } from "react";
 import { useCharmContext } from "../context/CharmContext";
 import { useHPContext } from "../context/HPContext";
@@ -24,6 +25,7 @@ import calculateNailDamage from "../functions/calculateNailDamage";
 import { calculateFireballDamage, calculateDiveDamage, calculateShriekDamage } from "../functions/calculateSpellDamage";
 import charmSynergies from "../functions/charmSynergies";
 
+//! max masks: 22
 const InfoPanel = () => {
     const { charms } = useCharmContext();
     const { baseNailDamage } = useNailContext();
@@ -36,12 +38,15 @@ const InfoPanel = () => {
 
     return (
         <>
-            <div>
-                HP:{" "}
-                {generateHPImageArray(baseHP, charms).map((m, idx) => (
-                    <img key={idx} src={m} />
-                ))}
-            </div>
+            <MaskInfoContainer>
+                <HPTextDiv>Masks</HPTextDiv>
+                <MasksContainer>
+                    {generateHPImageArray(baseHP, charms).map((m, idx) => (
+                        <MaskImg key={idx} src={m} />
+                    ))}
+                </MasksContainer>
+            </MaskInfoContainer>
+
             <div>NAIL DAMAGE: {calculateNailDamage(baseNailDamage, charms)}</div>
             <div>VS/SS DAMAGE: {calculateFireballDamage(baseFireballDamage, charms)}</div>
             <div>DD/DD DAMAGE: {calculateDiveDamage(baseDiveDamage, charms)}</div>
@@ -58,3 +63,23 @@ const InfoPanel = () => {
 };
 
 export default InfoPanel;
+
+const MaskInfoContainer = styled("div")((props) => ({
+    display: "flex",
+    alignItems: "center",
+}));
+
+const MasksContainer = styled("div")((props) => ({
+    display: "flex",
+    flexFlow: "row wrap",
+    // alignItems: "center",
+}));
+
+const HPTextDiv = styled("div")((props) => ({
+    marginRight: "10px",
+}));
+
+const MaskImg = styled("img")((props) => ({
+    height: "30px",
+    marginLeft: "2px",
+}));
