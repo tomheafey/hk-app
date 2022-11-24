@@ -25,6 +25,20 @@ import calculateNailDamage from "../functions/calculateNailDamage";
 import { calculateFireballDamage, calculateDiveDamage, calculateShriekDamage } from "../functions/calculateSpellDamage";
 import charmSynergies from "../functions/charmSynergies";
 
+const testCharm = {
+    id: "shamanStone",
+    name: "Shaman Stone",
+    pngName: "Shaman_Stone",
+    notches: 3,
+    flavorText: "Said to contain the knowledge of past generations of shaman. Increases the power of spells, dealing more damage to foes.",
+    effectText: [
+        "Increases Vengeful Spirit/Shade Soul damage by 33%",
+        "Increases Desolate Dive damage by 51% and Descending Dark damage by 47%",
+        "Increases Howling Wraiths/Abyss Shriek damage by 50%",
+        "Increases the size of Vengeful Spirit/Shade Soul",
+    ],
+};
+
 //! max masks: 22
 const InfoPanel = () => {
     const { charms } = useCharmContext();
@@ -48,30 +62,47 @@ const InfoPanel = () => {
             </MaskInfoContainer>
 
             <DamageInfoContainer>
-                <Table>
-                    <tr>
-                        <TDLabel>Nail Damage: </TDLabel>
-                        <TDData>{calculateNailDamage(baseNailDamage, charms)}</TDData>
-                    </tr>
-
-                    <tr>
-                        <TDLabel>Fireball Damage: </TDLabel>
-                        <TDData>{calculateFireballDamage(baseFireballDamage, charms, hasShadeSoul)}</TDData>
-                    </tr>
-                    <tr>
-                        <TDLabel>Dive Damage: </TDLabel>
-                        <TDData>{calculateDiveDamage(baseDiveDamage, charms, hasDescendingDark)}</TDData>
-                    </tr>
-                    <tr>
-                        <TDLabel>Yell Damage: </TDLabel>
-                        <TDData>{calculateShriekDamage(baseShriekDamage, charms, hasAbyssShriek)}</TDData>
-                    </tr>
-                </Table>
+                <DamageLabelsContainer>
+                    <div>Nail Damage:</div>
+                    <div>{hasShadeSoul ? "Shade Soul" : "Vengeful Spirit"} Damage:</div>
+                    <div>{hasDescendingDark ? "Descending Dark" : "Desolate Dive"} Damage:</div>
+                    <div>{hasAbyssShriek ? "Abyss Shriek" : "Howling Wraiths"} Damage:</div>
+                </DamageLabelsContainer>
+                <div>
+                    <div>{calculateNailDamage(baseNailDamage, charms)}</div>
+                    <div>{calculateFireballDamage(baseFireballDamage, charms)}</div>
+                    <div>{calculateDiveDamage(baseDiveDamage, charms, hasDescendingDark)}</div>
+                    <div>{calculateShriekDamage(baseShriekDamage, charms, hasAbyssShriek)}</div>
+                </div>
             </DamageInfoContainer>
 
-            {charms.map((c) => {
+            {/* <div>
+                {testCharm.name}
+                <UL>
+                    {testCharm.effectText.map((e, idx) => {
+                        return <LI key={idx}>{e}</LI>;
+                    })}
+                </UL>
+            </div> */}
+
+            <div>
+                {charms.map((c) => {
+                    return (
+                        <div key={c.id}>
+                            {c.name}
+                            <UL key={c.id}>
+                                {c.effectText.map((e, idx) => {
+                                    return <LI key={idx}>{e}</LI>;
+                                })}
+                            </UL>
+                        </div>
+                    );
+                })}
+            </div>
+
+            {/* {charms.map((c) => {
                 return <div key={c.id}>{`${c.name}: ${c.effectText}`}</div>;
-            })}
+            })} */}
             <div>SYNERGIES</div>
             {synergies.map((s, idx) => {
                 return <div key={idx}>{s}</div>;
@@ -82,17 +113,22 @@ const InfoPanel = () => {
 
 export default InfoPanel;
 
+const UL = styled("ul")((props) => ({
+    marginTop: "0",
+}));
+
+const LI = styled("li")((props) => ({
+    fontSize: "12px",
+}));
+
 const DamageInfoContainer = styled("div")((props) => ({
-    marginLeft: "25px",
+    display: "flex",
+    flexFlow: "row nowrap",
+    // marginLeft: "25px",
 }));
 
-const Table = styled("table")((props) => ({}));
-
-const TDLabel = styled("td")((props) => ({
-    textAlign: "right",
-}));
-const TDData = styled("td")((props) => ({
-    textAlign: "left",
+const DamageLabelsContainer = styled("div")((props) => ({
+    flexBasis: "200px",
 }));
 
 const MaskInfoContainer = styled("div")((props) => ({
