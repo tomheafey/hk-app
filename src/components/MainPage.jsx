@@ -11,9 +11,9 @@ const MainPage = () => {
     return (
         <>
             <OptionsMenu />
+            <CharmSelector />
             <CurrentCharms />
             <InfoPanel />
-            <CharmSelector />
         </>
     );
 };

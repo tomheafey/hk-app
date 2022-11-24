@@ -58,6 +58,7 @@ const OverCharmedDiv = styled("div")((props) => ({
     height: "35px",
     fontSize: "25px",
     color: "#964294",
+    fontFamily: "Trajan Pro",
 }));
 
 const NotchesDiv = styled("div")((props) => ({

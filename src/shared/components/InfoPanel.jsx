@@ -50,6 +50,10 @@ const InfoPanel = () => {
         return charmSynergies(charms);
     }, [charms]);
 
+    const currentNailDamage = useMemo(() => {
+        return calculateNailDamage(baseNailDamage, charms);
+    }, [charms, baseNailDamage]);
+
     return (
         <>
             <MaskInfoContainer>
@@ -69,7 +73,12 @@ const InfoPanel = () => {
                     <div>{hasAbyssShriek ? "Abyss Shriek" : "Howling Wraiths"} Damage:</div>
                 </DamageLabelsContainer>
                 <div>
-                    <div>{calculateNailDamage(baseNailDamage, charms)}</div>
+                    {baseNailDamage < currentNailDamage && (
+                        <b>
+                            <IncreaseSpan>{currentNailDamage}</IncreaseSpan>
+                        </b>
+                    )}
+                    {!(baseNailDamage < currentNailDamage) && baseNailDamage}
                     <div>{calculateFireballDamage(baseFireballDamage, charms)}</div>
                     <div>{calculateDiveDamage(baseDiveDamage, charms, hasDescendingDark)}</div>
                     <div>{calculateShriekDamage(baseShriekDamage, charms, hasAbyssShriek)}</div>
@@ -103,18 +112,23 @@ const InfoPanel = () => {
             {/* {charms.map((c) => {
                 return <div key={c.id}>{`${c.name}: ${c.effectText}`}</div>;
             })} */}
-            <div>SYNERGIES</div>
+            <div>Charm Synergies</div>
             {synergies.map((s, idx) => {
                 return <div key={idx}>{s}</div>;
             })}
         </>
     );
 };
-
+//TODO: display (CHARM IMG) (CHARM IMG) : [synergy text] instead of raw text
 export default InfoPanel;
 
+const IncreaseSpan = styled("span")((props) => ({
+    color: "#17FA40",
+}));
+
 const UL = styled("ul")((props) => ({
-    marginTop: "0",
+    margin: "0",
+    listStyle: "outside",
 }));
 
 const LI = styled("li")((props) => ({
