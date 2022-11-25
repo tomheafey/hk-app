@@ -116,7 +116,7 @@ const OptionsMenu = () => {
                 <StyledToggleButton value={2}>test2</StyledToggleButton>
             </StyledToggleButtonGroup> */}
 
-            <button onClick={(e) => setIsHidden(!isHidden)}>{isHidden ? "unhide" : "hide"} options</button>
+            {/* <button onClick={(e) => setIsHidden(!isHidden)}>{isHidden ? "unhide" : "hide"} options</button> */}
             {!isHidden && (
                 <div>
                     {/* these drop-downs could be func comps */}
