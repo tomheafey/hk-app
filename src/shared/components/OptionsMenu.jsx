@@ -15,45 +15,33 @@ import { useHPContext } from "../context/HPContext";
 import { useNailContext } from "../context/NailContext";
 import { useNotchesContext } from "../context/NotchesContext";
 import { useSpellsContext } from "../context/SpellsContext";
-import { voidHeart } from "../../charmList";
-import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import { carefreeMelody, grimmchild, kingsoul, voidHeart } from "../../charmList";
+// import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import styled from "@emotion/styled";
+import NailSelector from "./NailSelector";
+import MaskSelector from "./MaskSelector";
+import NotchSelector from "./NotchSelector";
+import ToggleButtonGroup from "./ToggleButtonGroup";
+
+const shadeSoul = require("../images/shade soul.png");
+const vengefulSpirit = require("../images/vengeful spirit.png");
+const descendingDark = require("../images/descending dark.png");
+const desolateDive = require("../images/desolate dive.png");
+const abyssShriek = require("../images/abyss shriek.png");
+const howlingWraiths = require("../images/howling wraiths.png");
 
 const OptionsMenu = () => {
-    const { setBaseNailDamage } = useNailContext();
+    const { nailLevel, setNailLevel, baseNailDamage } = useNailContext();
     const { baseHP, setBaseHP } = useHPContext();
     const { charms, removeCharm, addCharm, clearCharms } = useCharmContext();
     const { notchTotal, setNotchTotal } = useNotchesContext();
     const { hasShadeSoul, hasDescendingDark, hasAbyssShriek, baseFireballDamage, baseDiveDamage, baseShriekDamage, setHasShadeSoul, setHasDescendingDark, setHasAbyssShriek } = useSpellsContext();
     const { hasVoidHeart, setHasVoidHeart, hasCarefreeMelody, setHasCarefreeMelody } = useCharmTogglesContext();
 
-    const [nailLevel, setNailLevel] = useState("pure");
-    const [isHidden, setIsHidden] = useState(false);
-
     //deal with changing notches total if charms already equipped
-    function handleNotchToggle(e) {
+    function handleNotchToggle(val) {
         clearCharms();
-        setNotchTotal(e.target.value);
-    }
-
-    //if user changes carefree/grimm or void/king AND user has one equipped, clear charms out or at least remove it
-    function handleCharmToggles(e) {
-        if (e.target.value === "carefreeMelody") {
-            removeCharm("grimmchild");
-            setHasCarefreeMelody(true);
-        }
-        if (e.target.value === "grimmchild") {
-            removeCharm("carefreeMelody");
-            setHasCarefreeMelody(false);
-        }
-        if (e.target.value === "voidHeart") {
-            removeCharm("kingsoul");
-            setHasVoidHeart(true);
-        }
-        if (e.target.value === "kingsoul") {
-            removeCharm("voidHeart");
-            setHasVoidHeart(false);
-        }
+        setNotchTotal(val);
     }
 
     //automatically adds void heart if that radio is selected
@@ -62,36 +50,6 @@ const OptionsMenu = () => {
             addCharm(voidHeart);
         }
     }, [hasVoidHeart]);
-
-    useEffect(() => {
-        switch (nailLevel) {
-            case "pure":
-                setBaseNailDamage(21);
-                break;
-            case "coiled":
-                setBaseNailDamage(17);
-                break;
-            case "channelled":
-                setBaseNailDamage(13);
-                break;
-            case "sharpened":
-                setBaseNailDamage(9);
-                break;
-            case "old":
-                setBaseNailDamage(5);
-                break;
-            default:
-                break;
-        }
-    }, [nailLevel]);
-
-    const nailLevels = [
-        { val: "pure", label: "Pure Nail" },
-        { val: "coiled", label: "Coiled Nail" },
-        { val: "channelled", label: "Channelled Nail" },
-        { val: "sharpened", label: "Sharpened Nail" },
-        { val: "old", label: "Old Nail" },
-    ];
 
     let hpOptions = [];
     for (let i = 9; i >= 5; i--) {
@@ -103,208 +61,94 @@ const OptionsMenu = () => {
         notchOptions.push({ val: i, label: i.toString() });
     }
 
-    // const [testState, setTestState] = useState("1");
-    // console.log(testState);
-    //TODO: use MUI for alternatives to radios
-    //! abandoning this for now - for some reason bg from index.css is overriding the styled button & buttongroup
     return (
         <>
-            {/* <StyledToggleButtonGroup sx={{ backgroundColor: "blue", borderColor: "green" }} value={testState} exclusive onChange={(e) => setTestState(e.target.value)}>
-                <StyledToggleButton sx={{ color: "red" }} value={1}>
-                    test1
-                </StyledToggleButton>
-                <StyledToggleButton value={2}>test2</StyledToggleButton>
-            </StyledToggleButtonGroup> */}
-
             {/* <button onClick={(e) => setIsHidden(!isHidden)}>{isHidden ? "unhide" : "hide"} options</button> */}
-            {!isHidden && (
-                <div>
-                    {/* these drop-downs could be func comps */}
-                    <label htmlFor="nail-level">Nail level</label>
-                    <select id="nail-level" value={nailLevel} onChange={(e) => setNailLevel(e.target.value)}>
-                        {nailLevels.map((n) => (
-                            <option key={n.val} value={n.val}>
-                                {n.label}
-                            </option>
-                        ))}
-                    </select>
 
-                    <label htmlFor="base-hp">Base Masks</label>
-                    <select id="base-hp" value={baseHP} onChange={(e) => setBaseHP(parseInt(e.target.value))}>
-                        {hpOptions.map((opt) => (
-                            <option key={opt.val} value={opt.val}>
-                                {opt.label}
-                            </option>
-                        ))}
-                    </select>
+            <div>
+                <NailSelector setNailLevel={setNailLevel} nailLevel={nailLevel} />
+                {/* these drop-downs could be func comps */}
 
-                    <label htmlFor="notches">Notches</label>
-                    <select id="notches" value={notchTotal} onChange={(e) => handleNotchToggle(e)}>
-                        {notchOptions.map((opt) => (
-                            <option key={opt.val} value={opt.val}>
-                                {opt.label}
-                            </option>
-                        ))}
-                    </select>
+                <MaskSelector baseHP={baseHP} setBaseHP={setBaseHP} />
 
-                    {/* <div>
-                        <input type="radio" name="cm-gc" id="carefree-melody" defaultChecked />
-                        <label htmlFor="carefree-melody">Carefree Melody</label>
-                        <input type="radio" name="cm-gc" id="grimmchild" />
-                        <label htmlFor="grimmchild">Grimmchild</label>
-                    </div> */}
+                <NotchSelector notchTotal={notchTotal} handleToggle={handleNotchToggle} />
 
-                    <div>
-                        <input
-                            type="radio"
-                            name="cm-gc"
-                            id="carefree-melody"
-                            value={"carefreeMelody"}
-                            onChange={(e) => {
-                                handleCharmToggles(e);
-                            }}
-                            checked={hasCarefreeMelody}
-                        />
-                        <label htmlFor="carefree-melody">Carefree Melody</label>
+                <ToggleButtonGroup
+                    hasBetterItem={hasShadeSoul}
+                    setHasBetterItem={setHasShadeSoul}
+                    betterItemName="Shade Soul"
+                    betterItemVal="shadeSoul"
+                    betterItemPic={shadeSoul}
+                    worseItemName="Vengeful Spirit"
+                    worseItemVal="vengefulSpirit"
+                    worseItemPic={vengefulSpirit}
+                    removeCharm={removeCharm}
+                />
 
-                        <input
-                            type="radio"
-                            name="cm-gc"
-                            id="grimmchild"
-                            value={"grimmchild"}
-                            onChange={(e) => {
-                                handleCharmToggles(e);
-                            }}
-                            checked={!hasCarefreeMelody}
-                        />
-                        <label htmlFor="grimmchild">Grimmchild</label>
-                    </div>
+                <ToggleButtonGroup
+                    hasBetterItem={hasDescendingDark}
+                    setHasBetterItem={setHasDescendingDark}
+                    betterItemName="Descending Dark"
+                    betterItemVal="descendingDark"
+                    betterItemPic={descendingDark}
+                    worseItemName="Desolate Dive"
+                    worseItemVal="desolateDive"
+                    worseItemPic={desolateDive}
+                    removeCharm={removeCharm}
+                />
 
-                    {/* <div>
-                        <input type="radio" name="vh-ks" id="void-heart" defaultChecked />
-                        <label htmlFor="void-heart">Void Heart</label>
-                        <input type="radio" name="vh-ks" id="kingsoul" />
-                        <label htmlFor="kingsoul">Kingsoul</label>
-                    </div> */}
+                <ToggleButtonGroup
+                    hasBetterItem={hasAbyssShriek}
+                    setHasBetterItem={setHasAbyssShriek}
+                    betterItemName="Abyss Shriek"
+                    betterItemVal="abyssShriek"
+                    betterItemPic={abyssShriek}
+                    worseItemName="Howling Wraiths"
+                    worseItemVal="howlingWraiths"
+                    worseItemPic={howlingWraiths}
+                    removeCharm={removeCharm}
+                />
 
-                    <div>
-                        <input
-                            type="radio"
-                            name="vh-ks"
-                            id="void-heart"
-                            value={"voidHeart"}
-                            onChange={(e) => {
-                                handleCharmToggles(e);
-                            }}
-                            checked={hasVoidHeart}
-                        />
-                        <label htmlFor="void-heart">Void Heart</label>
+                <ToggleButtonGroup
+                    hasBetterItem={hasCarefreeMelody}
+                    setHasBetterItem={setHasCarefreeMelody}
+                    betterItemName={carefreeMelody.name}
+                    betterItemVal={carefreeMelody.id}
+                    betterItemPic={require(`../images/${carefreeMelody.pngName}.png`)}
+                    worseItemName={grimmchild.name}
+                    worseItemVal={grimmchild.id}
+                    worseItemPic={require(`../images/${grimmchild.pngName}.png`)}
+                    removeCharm={removeCharm}
+                />
 
-                        <input
-                            type="radio"
-                            name="vh-ks"
-                            id="kingsoul"
-                            value={"kingsoul"}
-                            onChange={(e) => {
-                                handleCharmToggles(e);
-                            }}
-                            checked={!hasVoidHeart}
-                        />
-                        <label htmlFor="kingsoul">Kingsoul</label>
-                    </div>
-
-                    <div>
-                        <input
-                            type="radio"
-                            name="ss-vs"
-                            id="shade-soul"
-                            onChange={(e) => {
-                                setHasShadeSoul(!hasShadeSoul);
-                            }}
-                            checked={hasShadeSoul}
-                        />
-                        <label htmlFor="shade-soul">Shade Soul</label>
-                        <input
-                            type="radio"
-                            name="ss-vs"
-                            id="vengeful-spirit"
-                            onChange={(e) => {
-                                setHasShadeSoul(!hasShadeSoul);
-                            }}
-                            checked={!hasShadeSoul}
-                        />
-                        <label htmlFor="vengeful-spirit">Vengeful Spirit</label>
-                    </div>
-
-                    <div>
-                        <input
-                            type="radio"
-                            name="dd-dd"
-                            id="descending-dark"
-                            onChange={(e) => {
-                                setHasDescendingDark(!hasDescendingDark);
-                            }}
-                            checked={hasDescendingDark}
-                        />
-                        <label htmlFor="descending-dark">Descending Dark</label>
-                        <input
-                            type="radio"
-                            name="dd-dd"
-                            id="desolate-dive"
-                            onChange={(e) => {
-                                setHasDescendingDark(!hasDescendingDark);
-                            }}
-                            checked={!hasDescendingDark}
-                        />
-                        <label htmlFor="desolate-dive">Desolate Dive</label>
-                    </div>
-
-                    {/* <div>
-                        <input type="radio" name="as-hw" id="abyss-shriek" defaultChecked />
-                        <label htmlFor="abyss-shriek">Abyss Shriek</label>
-                        <input type="radio" name="as-hw" id="howling-wraiths" />
-                        <label htmlFor="howling-wraiths">Howling Wraiths</label>
-                    </div> */}
-                    <div>
-                        <input
-                            type="radio"
-                            name="as-hw"
-                            id="abyss-shriek"
-                            onChange={(e) => {
-                                setHasAbyssShriek(!hasAbyssShriek);
-                            }}
-                            checked={hasAbyssShriek}
-                        />
-                        <label htmlFor="abyss-shriek">Abyss Shriek</label>
-                        <input
-                            type="radio"
-                            name="as-hw"
-                            id="howling-wraiths"
-                            onChange={(e) => {
-                                setHasAbyssShriek(!hasAbyssShriek);
-                            }}
-                            checked={!hasAbyssShriek}
-                        />
-                        <label htmlFor="howling-wraiths">Howling Wraiths</label>
-                    </div>
-                </div>
-            )}
+                <ToggleButtonGroup
+                    hasBetterItem={hasVoidHeart}
+                    setHasBetterItem={setHasVoidHeart}
+                    betterItemName={voidHeart.name}
+                    betterItemVal={voidHeart.id}
+                    betterItemPic={require(`../images/${voidHeart.pngName}.png`)}
+                    worseItemName={kingsoul.name}
+                    worseItemVal={kingsoul.id}
+                    worseItemPic={require(`../images/${kingsoul.pngName}.png`)}
+                    removeCharm={removeCharm}
+                />
+            </div>
         </>
     );
 };
 
 export default OptionsMenu;
 
-const StyledToggleButtonGroup = styled(ToggleButtonGroup)(() => ({
-    // color: "red",
-    // backgroundColor: "black",
-    // border: "1px solid white",
-}));
+// const StyledToggleButtonGroup = styled(ToggleButtonGroup)(() => ({
+// color: "red",
+// backgroundColor: "black",
+// border: "1px solid white",
+// }));
 
-const StyledToggleButton = styled(ToggleButton)(() => ({
-    // backgroundColor: "blue",
-    // color: "red",
-    // color: "red",
-    // backgroundColor: "black",
-    // border: "1px solid white",
-}));
+// const StyledToggleButton = styled(ToggleButton)(() => ({
+// backgroundColor: "blue",
+// color: "red",
+// color: "red",
+// backgroundColor: "black",
+// border: "1px solid white",
+// }));

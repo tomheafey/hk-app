@@ -1,16 +1,28 @@
-//components that need access to nail information:
-//  options menu
-//  info panel
-//      potentially the "boss page" component
-
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useMemo, useState } from "react";
 
 const NailContext = createContext();
 
 export const useNailContext = () => useContext(NailContext);
 
 export function NailProvider(props) {
-    const [baseNailDamage, setBaseNailDamage] = useState(21);
+    const [nailLevel, setNailLevel] = useState("pure");
 
-    return <NailContext.Provider value={{ baseNailDamage, setBaseNailDamage }}>{props.children}</NailContext.Provider>;
+    const baseNailDamage = useMemo(() => {
+        switch (nailLevel) {
+            case "pure":
+                return 21;
+            case "coiled":
+                return 17;
+            case "channelled":
+                return 13;
+            case "sharpened":
+                return 9;
+            case "old":
+                return 5;
+            default:
+                break;
+        }
+    }, [nailLevel]);
+
+    return <NailContext.Provider value={{ baseNailDamage, nailLevel, setNailLevel }}>{props.children}</NailContext.Provider>;
 }
