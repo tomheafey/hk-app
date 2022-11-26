@@ -1,12 +1,4 @@
-//! may want to move this onto an 'intro page' to not clutter the main page
-
-//should DEFAULT everything to 112% completion status
-//TODO: break this off into an 'intro' page, set up routing for "/intro" (or whatever) and "/main"
-
-//TODO: create functional components for dropdowns and radio groups
-//TODO (maybe): replace option buttons with some kind of prettier MUI component
 //TODO (maybe): images of diff nails in nail level dropdown
-//TODO (maybe): images of spells for spell toggles
 
 import React, { useEffect, useState } from "react";
 import { useCharmContext } from "../context/CharmContext";
@@ -63,11 +55,9 @@ const OptionsMenu = () => {
 
     return (
         <>
-            {/* <button onClick={(e) => setIsHidden(!isHidden)}>{isHidden ? "unhide" : "hide"} options</button> */}
-
             <div>
-                <NailSelector setNailLevel={setNailLevel} nailLevel={nailLevel} />
-                {/* these drop-downs could be func comps */}
+                <NailSelector nailLevel={nailLevel} setNailLevel={setNailLevel} />
+                {/* <NailSelector setNailLevel={setNailLevel} nailLevel={nailLevel} /> */}
 
                 <MaskSelector baseHP={baseHP} setBaseHP={setBaseHP} />
 
@@ -140,14 +130,6 @@ const OptionsMenu = () => {
 export default OptionsMenu;
 
 // const StyledToggleButtonGroup = styled(ToggleButtonGroup)(() => ({
-// color: "red",
-// backgroundColor: "black",
-// border: "1px solid white",
-// }));
-
-// const StyledToggleButton = styled(ToggleButton)(() => ({
-// backgroundColor: "blue",
-// color: "red",
 // color: "red",
 // backgroundColor: "black",
 // border: "1px solid white",

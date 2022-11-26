@@ -31,18 +31,19 @@ const ToggleButtonGroup = ({ hasBetterItem, setHasBetterItem, betterItemName, be
 export default ToggleButtonGroup;
 
 const Button = styled("button")(() => ({
-    border: "1px solid grey",
-    color: "grey",
+    border: "1px solid white",
+    color: "white",
     borderRadius: "5px",
     width: "200px",
     height: "100px",
+    opacity: ".5",
     // "&:hover": {
     //     borderColor: "blue",
     //     color: "blue",
     // },
     "&:disabled": {
         border: "3px solid white",
-        color: "white",
+        opacity: "1",
     },
 }));
 
