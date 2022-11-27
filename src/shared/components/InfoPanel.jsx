@@ -24,6 +24,7 @@ import generateHPImageArray from "../functions/calculateHP";
 import calculateNailDamage from "../functions/calculateNailDamage";
 import { calculateFireballDamage, calculateDiveDamage, calculateShriekDamage } from "../functions/calculateSpellDamage";
 import charmSynergies from "../functions/charmSynergies";
+import SynergyInfo from "./SynergyInfo";
 
 const testCharm = {
     id: "shamanStone",
@@ -85,15 +86,6 @@ const InfoPanel = () => {
                 </div>
             </DamageInfoContainer>
 
-            {/* <div>
-                {testCharm.name}
-                <UL>
-                    {testCharm.effectText.map((e, idx) => {
-                        return <LI key={idx}>{e}</LI>;
-                    })}
-                </UL>
-            </div> */}
-
             <div>
                 {charms.map((c) => {
                     return (
@@ -112,10 +104,10 @@ const InfoPanel = () => {
             {/* {charms.map((c) => {
                 return <div key={c.id}>{`${c.name}: ${c.effectText}`}</div>;
             })} */}
-            <div>Charm Synergies</div>
-            {synergies.map((s, idx) => {
+            <SynergyInfo synergies={synergies} />
+            {/* {synergies.map((s, idx) => {
                 return <div key={idx}>{s}</div>;
-            })}
+            })} */}
         </>
     );
 };

@@ -8,7 +8,6 @@ import { useNailContext } from "../context/NailContext";
 import { useNotchesContext } from "../context/NotchesContext";
 import { useSpellsContext } from "../context/SpellsContext";
 import { carefreeMelody, grimmchild, kingsoul, voidHeart } from "../../charmList";
-// import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import styled from "@emotion/styled";
 import NailSelector from "./NailSelector";
 import MaskSelector from "./MaskSelector";
@@ -23,11 +22,11 @@ const abyssShriek = require("../images/abyss shriek.png");
 const howlingWraiths = require("../images/howling wraiths.png");
 
 const OptionsMenu = () => {
-    const { nailLevel, setNailLevel, baseNailDamage } = useNailContext();
+    const { nailLevel, setNailLevel } = useNailContext();
     const { baseHP, setBaseHP } = useHPContext();
     const { charms, removeCharm, addCharm, clearCharms } = useCharmContext();
     const { notchTotal, setNotchTotal } = useNotchesContext();
-    const { hasShadeSoul, hasDescendingDark, hasAbyssShriek, baseFireballDamage, baseDiveDamage, baseShriekDamage, setHasShadeSoul, setHasDescendingDark, setHasAbyssShriek } = useSpellsContext();
+    const { hasShadeSoul, hasDescendingDark, hasAbyssShriek, setHasShadeSoul, setHasDescendingDark, setHasAbyssShriek } = useSpellsContext();
     const { hasVoidHeart, setHasVoidHeart, hasCarefreeMelody, setHasCarefreeMelody } = useCharmTogglesContext();
 
     //deal with changing notches total if charms already equipped

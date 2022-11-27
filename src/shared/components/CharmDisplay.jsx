@@ -11,6 +11,7 @@ const fullNotch = require("../images/full notch.png");
 //TODO: resize notch images in tooltip
 
 //TODO: when site bg is black, tooltip has annoying black bar at top
+//TODO: change black across site to the dark grey used for bg
 
 //{/* <img src={require(`../images/${charm.pngName}.png`)} /> */}
 const CharmDisplay = ({ charm, handleClick }) => {
@@ -48,12 +49,12 @@ const TooltipDisplay = ({ charm }) => {
     );
 };
 
-const Div = styled("span")((props) => ({
-    border: "1px solid black",
+const Div = styled("div")((props) => ({
+    // border: "1px solid black",
     textAlign: "center",
-    overflowWrap: "break-word",
+    // overflowWrap: "break-word",
     fontSize: "10px",
-    height: "75px",
+    height: "80px",
     width: "75px",
 }));
 

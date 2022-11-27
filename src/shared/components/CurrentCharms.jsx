@@ -22,7 +22,7 @@ const CurrentCharms = () => {
 
     return (
         <>
-            <OverCharmedDiv>{isOvercharmed && "OVERCHARMED"} </OverCharmedDiv>
+            Equipped Charms
             <CurrentCharmsContainer>
                 {charms.map((charm) => {
                     return <CharmDisplay key={charm.id} charm={charm} handleClick={handleCharmClick} />;
@@ -35,6 +35,7 @@ const CurrentCharms = () => {
                     }
                 })}
             </CurrentCharmsContainer>
+            <OverCharmedDiv>{isOvercharmed && "OVERCHARMED"} </OverCharmedDiv>
             <NotchesDiv>
                 <NotchesTextDiv>Notches</NotchesTextDiv>
                 <NotchDisplay notchesArray={notchesArray} />

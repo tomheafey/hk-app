@@ -54,6 +54,7 @@ const CharmSelector = () => {
 
     return (
         <>
+            Charm Selector
             <CharmSelectionContainer>
                 {masterCharmList.map((charm) => {
                     return <CharmDisplay key={charm.id} charm={charm} handleClick={handleCharmClick} />;

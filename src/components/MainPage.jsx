@@ -14,7 +14,9 @@ const MainPage = () => {
     };
     return (
         <>
-            <button onClick={(e) => goToOptionsPage()}>Return to options</button>
+            <div>
+                <button onClick={(e) => goToOptionsPage()}>Return to options</button>
+            </div>
             <CharmSelector />
             <CurrentCharms />
             <InfoPanel />
