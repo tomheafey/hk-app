@@ -9,9 +9,6 @@ const NotchesInfo = ({ isOvercharmed, notchesArray }) => {
             <NotchesDiv>
                 <NotchesTextDiv>Notches</NotchesTextDiv>
                 <NotchDisplay notchesArray={notchesArray} />
-                {/* {notchesArray.map((n, idx) => (
-                    <span key={idx}>{n}</span>
-                ))} */}
             </NotchesDiv>
         </>
     );

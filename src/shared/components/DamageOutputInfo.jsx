@@ -14,8 +14,6 @@ const DamageOutputInfo = ({
     currentDiveDamage,
     currentShriekDamage,
 }) => {
-    console.log(baseFireballDamage, baseDiveDamage, baseShriekDamage);
-    console.log(currentFireballDamage, currentDiveDamage, currentShriekDamage);
     return (
         <>
             <Div>Damage Output</Div>

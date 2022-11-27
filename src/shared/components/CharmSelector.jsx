@@ -5,17 +5,20 @@ import { useCharmContext } from "../context/CharmContext";
 import CharmDisplay from "./CharmDisplay";
 import { useNotchesContext } from "../context/NotchesContext";
 import { useCharmTogglesContext } from "../context/CharmTogglesContext";
+import { useResizeDetector } from "react-resize-detector";
 
 //! using lazy method of swapping out grimm/cf & void/kingsoul
 
 //TODO: figure out logic for dulling out charm when it's currently selected (turn down alpha or something?)
 //TODO: add glowy background to selected charms (the ones that are dulled out)
 //TODO (maybe): animation when equipping/unequipping charms
+//TODO: display tap+hold message for mobile users (maybe try react-resize-detector?)
 
 const CharmSelector = () => {
     const { charms, addCharm, removeCharm } = useCharmContext();
     const { notchTotal, notchCount, setNotchCount, notchesArray } = useNotchesContext();
     const { hasVoidHeart, hasCarefreeMelody } = useCharmTogglesContext();
+    const { width, ref } = useResizeDetector();
 
     useEffect(() => {
         let count = 0;
@@ -54,7 +57,8 @@ const CharmSelector = () => {
 
     return (
         <>
-            Charm Selector
+            <Div ref={ref}>Charm Selector</Div>
+            {width < 400 && <div>Tap+hold charms to view details</div>}
             <CharmSelectionContainer>
                 {masterCharmList.map((charm) => {
                     return <CharmDisplay key={charm.id} charm={charm} handleClick={handleCharmClick} />;
@@ -87,16 +91,13 @@ const CharmSelector = () => {
 export default CharmSelector;
 
 const CharmSelectionContainer = styled("div")((props) => ({
-    border: "1px solid blue",
+    border: "1px solid grey",
+    borderRadius: "10px",
     display: "flex",
     flexFlow: "row wrap",
 }));
 
-const Div = styled("span")((props) => ({
-    border: "1px solid black",
-    textAlign: "center",
-    overflowWrap: "break-word",
-    fontSize: "12px",
-    height: "75px",
-    width: "75px",
+const Div = styled("div")(() => ({
+    fontSize: "25px",
+    marginBottom: "10px",
 }));
