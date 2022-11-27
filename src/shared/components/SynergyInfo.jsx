@@ -4,7 +4,8 @@ import React from "react";
 const SynergyInfo = ({ synergies }) => {
     return (
         <>
-            <div>Charm Synergies</div>
+            <Div>Charm Synergies</Div>
+            {synergies.length === 0 && "No charm synergies."}
             {synergies.map((s, idx) => {
                 return (
                     <SynergyContainer key={idx}>
@@ -18,6 +19,11 @@ const SynergyInfo = ({ synergies }) => {
 };
 
 export default SynergyInfo;
+
+const Div = styled("div")(() => ({
+    fontSize: "25px",
+    marginBottom: "10px",
+}));
 
 const SynergyCharmImg = styled("img")(() => ({
     height: "25px",

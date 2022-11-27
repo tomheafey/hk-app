@@ -24,6 +24,7 @@ import generateHPImageArray from "../functions/calculateHP";
 import calculateNailDamage from "../functions/calculateNailDamage";
 import { calculateFireballDamage, calculateDiveDamage, calculateShriekDamage } from "../functions/calculateSpellDamage";
 import charmSynergies from "../functions/charmSynergies";
+import CharmEffectInfo from "./CharmEffectInfo";
 import SynergyInfo from "./SynergyInfo";
 
 const testCharm = {
@@ -86,32 +87,13 @@ const InfoPanel = () => {
                 </div>
             </DamageInfoContainer>
 
-            <div>
-                {charms.map((c) => {
-                    return (
-                        <div key={c.id}>
-                            {c.name}
-                            <UL key={c.id}>
-                                {c.effectText.map((e, idx) => {
-                                    return <LI key={idx}>{e}</LI>;
-                                })}
-                            </UL>
-                        </div>
-                    );
-                })}
-            </div>
+            <CharmEffectInfo charms={charms} />
 
-            {/* {charms.map((c) => {
-                return <div key={c.id}>{`${c.name}: ${c.effectText}`}</div>;
-            })} */}
             <SynergyInfo synergies={synergies} />
-            {/* {synergies.map((s, idx) => {
-                return <div key={idx}>{s}</div>;
-            })} */}
         </>
     );
 };
-//TODO: display (CHARM IMG) (CHARM IMG) : [synergy text] instead of raw text
+
 export default InfoPanel;
 
 const IncreaseSpan = styled("span")((props) => ({
