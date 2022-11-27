@@ -5,7 +5,6 @@ const fullNotch = require("../images/full notch.png");
 const emptyNotch = require("../images/empty notch.png");
 const overcharmNotch = require("../images/overcharmed notch.png");
 
-//TODO: full notch needs to be smaller and have background glow
 //TODO: find a cleaner image of overcharm and crop better - also bg glow?
 
 const NotchDisplay = ({ notchesArray }) => {
@@ -21,5 +20,5 @@ const NotchDisplay = ({ notchesArray }) => {
 export default NotchDisplay;
 
 const NotchImg = styled("img")((props) => ({
-    height: "20px",
+    height: "19px",
 }));

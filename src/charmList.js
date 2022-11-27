@@ -60,7 +60,7 @@ export const masterCharmList = [
         pngName: "Dashmaster",
         notches: 2,
         flavorText:
-            "Bears the likeness of an eccentric bug known only as 'The Dashmaster'.The bearer will be able to dash more often as well as dash downwards. Perfect for those who want to move around as quickly as possible.",
+            "Bears the likeness of an eccentric bug known only as 'The Dashmaster'. The bearer will be able to dash more often as well as dash downwards. Perfect for those who want to move around as quickly as possible.",
         effectText: ["Reduces the Mothwing Cloak cooldown to 0.4 seconds (from 0.6 seconds)", "Allows dashing downwards by holding DOWN."],
     },
     {
@@ -86,7 +86,7 @@ export const masterCharmList = [
         pngName: "Grubberflys_Elegy",
         notches: 3,
         flavorText:
-            "Contains the gratitude of grubs who will move to the next stage of their lives. Imbues weapons with a holy strength.When the bearer is at full health, they will fire beams of white-hot energy from their nail.",
+            "Contains the gratitude of grubs who will move to the next stage of their lives. Imbues weapons with a holy strength. When the bearer is at full health, they will fire beams of white-hot energy from their nail.",
         //[The damage is rounded to the nearest integer, or nearest even integer if halfway between two. This results in 2/4/6/8/10 damage at Nail upgrades 0/1/2/3/4.]
         effectText: ["When at full Masks, Nail attacks fire a projectile dealing 50% Nail damage per hit"],
     },
@@ -147,7 +147,7 @@ export const masterCharmList = [
         name: "Spell Twister",
         pngName: "Spell_Twister",
         notches: 2,
-        flavorText: "Reflecting the desires of the Soul Sanctum for mastery over Soul, it improves the bearer's ability to cast spells.Reduces the Soul cost of casting spells.",
+        flavorText: "Reflecting the desires of the Soul Sanctum for mastery over Soul, it improves the bearer's ability to cast spells. Reduces the Soul cost of casting spells.",
         effectText: ["Reduces SOUL cost of Spells to 24 (from 33)"],
     },
     {
@@ -155,7 +155,7 @@ export const masterCharmList = [
         name: "Steady Body",
         pngName: "Steady_Body",
         notches: 1,
-        flavorText: "Keeps its bearer from recoiling backwards when they strike an enemy with a nail.Allows one to stay steady and keep attacking.",
+        flavorText: "Keeps its bearer from recoiling backwards when they strike an enemy with a nail. Allows one to stay steady and keep attacking.",
         effectText: ["Removes all knockback/recoil from hitting enemies"],
     },
     {
@@ -163,7 +163,7 @@ export const masterCharmList = [
         name: "Heavy Blow",
         pngName: "Heavy_Blow",
         notches: 2,
-        flavorText: "Formed from the nails of fallen warriors.Increases the force of the bearer's nail, causing enemies to recoil further when hit.",
+        flavorText: "Formed from the nails of fallen warriors. Increases the force of the bearer's nail, causing enemies to recoil further when hit.",
         //[Does not affect the knockback of Nail attacks made while wall-sliding.]
         //Godmaster content Reduces number of hits needed to stagger a boss by 1
         effectText: ["Increases Nail attack knockback by 75%", "Increases Great Slash knockback by 33%"],
@@ -189,7 +189,7 @@ export const masterCharmList = [
         name: "Mark of Pride",
         pngName: "Mark_of_Pride",
         notches: 3,
-        flavorText: "Freely given by the Mantis Tribe to those they respect.Greatly increases the range of the bearer's nail, allowing them to strike foes from further away.",
+        flavorText: "Freely given by the Mantis Tribe to those they respect. Greatly increases the range of the bearer's nail, allowing them to strike foes from further away.",
         effectText: ["Increases Nail range by 25%"],
     },
     {
@@ -213,7 +213,7 @@ export const masterCharmList = [
         name: "Baldur Shell",
         pngName: "Baldur_Shell",
         notches: 2,
-        flavorText: "Protects its bearer with a hard shell while focusing Soul.The shell is not indestructible and will shatter if it absorbs too much damage.",
+        flavorText: "Protects its bearer with a hard shell while focusing Soul. The shell is not indestructible and will shatter if it absorbs too much damage.",
         effectText: ["Block up to 4 hits while using Focus"],
     },
     {
@@ -222,7 +222,7 @@ export const masterCharmList = [
         name: "Flukenest",
         pngName: "Flukenest",
         notches: 3,
-        flavorText: "Living charm born in the gut of a Flukemarm.Transforms the Vengeful Spirit spell into a horde of volatile baby flukes.",
+        flavorText: "Living charm born in the gut of a Flukemarm. Transforms the Vengeful Spirit spell into a horde of volatile baby flukes.",
         effectText: ["Replaces Vengeful Spirit with 9 flukes and Shade Soul with 16 flukes", "Each fluke does 4 damage, resulting in a total damage of 36 with Vengeful Spirit and 64 with Shade Soul"],
     },
     {
@@ -238,7 +238,7 @@ export const masterCharmList = [
         name: "Glowing Womb",
         pngName: "Glowing_Womb",
         notches: 2,
-        flavorText: "Drains the Soul of its bearer and uses it to birth hatchlings.The hatchlings have no desire to eat or live, and will sacrifice themselves to protect their parent.",
+        flavorText: "Drains the Soul of its bearer and uses it to birth hatchlings. The hatchlings have no desire to eat or live, and will sacrifice themselves to protect their parent.",
         effectText: ["Spawns Hatchlings for 8 SOUL each that deal 9 damage to enemies on contact", "A Hatchling spawns every 4 seconds with a maximum of 4 Hatchlings at a time"],
     },
     {
@@ -246,7 +246,7 @@ export const masterCharmList = [
         name: "Quick Focus",
         pngName: "Quick_Focus",
         notches: 3,
-        flavorText: "A charm containing a crystal lens.Increases the speed of focusing Soul, allowing the bearer to heal damage faster.",
+        flavorText: "A charm containing a crystal lens. Increases the speed of focusing Soul, allowing the bearer to heal damage faster.",
         effectText: ["Increases focus speed by ~33% to 0.594 seconds (from 0.891 seconds)"],
     },
     {
@@ -263,7 +263,7 @@ export const masterCharmList = [
         pngName: "Lifeblood_Heart",
         notches: 2,
         flavorText:
-            "Contains a living core that seeps precious lifeblood.When resting, the bearer will gain a coating of lifeblood that protects from a modest amount of damage. (Sitting at a bench grants 2 temporary bonus Masks.)",
+            "Contains a living core that seeps precious lifeblood. When resting, the bearer will gain a coating of lifeblood that protects from a modest amount of damage. (Sitting at a bench grants 2 temporary bonus Masks.)",
         effectText: ["Adds 2 Lifeblood Masks when resting"],
     },
     {
@@ -272,7 +272,7 @@ export const masterCharmList = [
         pngName: "Lifeblood_Core",
         notches: 3,
         flavorText:
-            "Contains a living core that bleeds precious lifeblood.When resting, the bearer will gain a coating of lifeblood that protects from a large amount of damage. (Sitting at a bench grants 4 temporary bonus Masks.)",
+            "Contains a living core that bleeds precious lifeblood. When resting, the bearer will gain a coating of lifeblood that protects from a large amount of damage. (Sitting at a bench grants 4 temporary bonus Masks.)",
         effectText: ["Adds 4 Lifeblood Masks when resting"],
     },
     {
@@ -290,7 +290,7 @@ export const masterCharmList = [
         name: "Hiveblood",
         pngName: "Hiveblood",
         notches: 4,
-        flavorText: "Golden nugget of the Hive's precious hardened nectar.Heals the bearer's wounds over time, allowing them to regain health without focusing Soul.",
+        flavorText: "Golden nugget of the Hive's precious hardened nectar. Heals the bearer's wounds over time, allowing them to regain health without focusing Soul.",
         effectText: ["Passively heals the last unit of health lost after 10 seconds without taking further damage", "Makes the enemies inside the Hive passive"],
     },
     {
@@ -308,7 +308,7 @@ export const masterCharmList = [
         name: "Sharp Shadow",
         pngName: "Sharp_Shadow",
         notches: 2,
-        flavorText: "Contains a forbidden spell that transforms shadows into deadly weapons.When using Shadow Dash, the bearer's body will sharpen and damage enemies.",
+        flavorText: "Contains a forbidden spell that transforms shadows into deadly weapons. When using Shadow Dash, the bearer's body will sharpen and damage enemies.",
         effectText: ["Damages enemies for 1x Nail damage when dashing through them", "When using Shade Cloak, increases shadow dash length by 40%"],
     },
     {
@@ -316,7 +316,7 @@ export const masterCharmList = [
         name: "Shape of Unn",
         pngName: "Shape_of_Unn",
         notches: 2,
-        flavorText: "Reveals the form of Unn within the bearer.While focusing Soul, the bearer will take on a new shape and can move freely to avoid enemies.",
+        flavorText: "Reveals the form of Unn within the bearer. While focusing Soul, the bearer will take on a new shape and can move freely to avoid enemies.",
         effectText: ["Allows moving while focusing and reduces hitbox height"],
     },
     {
@@ -395,7 +395,7 @@ export const carefreeMelody = {
     name: "Carefree Melody",
     pngName: "Carefree_Melody",
     notches: 3,
-    flavorText: "Token commemorating the start of a friendship.Contains a song of protections that may defend the bearer from damage.",
+    flavorText: "Token commemorating the start of a friendship. Contains a song of protections that may defend the bearer from damage.",
     //https://hollowknight.fandom.com/wiki/Carefree_Melody#Probability
     effectText: ["Has a chance to block incoming damage", "The average block chance is ~22.46%"],
 };
@@ -406,7 +406,7 @@ export const grimmchild = {
     pngName: "Grimmchild",
     notches: 2,
     flavorText:
-        "Worn by those who take part in the Grimm Troupe's RitualThe bearer must seek the Grimmkin and collect their flames. Uncollected flames will appear on the bearer's map. (Summons a flying creature which will deal damage to enemies. Damage dealt scales with number of flames collected.)",
+        "Worn by those who take part in the Grimm Troupe's Ritual. The bearer must seek the Grimmkin and collect their flames. Uncollected flames will appear on the bearer's map. (Summons a flying creature which will deal damage to enemies. Damage dealt scales with number of flames collected.)",
     effectText: ["Summons a flying companion that deals 11 damage per shot"],
 };
 
@@ -416,7 +416,7 @@ export const voidHeart = {
     pngName: "Void_Heart",
     notches: 0,
     flavorText:
-        "An emptiness that was hidden within, now unconstrained. Unifies the void under the bearer's will.This charm is a part of its bearer and can not be unequipped. (Secondary Effect: Grants access to multiple endings, locks out all other endings. Removes hostility from some enemy types.)",
+        "An emptiness that was hidden within, now unconstrained. Unifies the void under the bearer's will. This charm is a part of its bearer and can not be unequipped. (Secondary Effect: Grants access to multiple endings, locks out all other endings. Removes hostility from some enemy types.)",
     effectText: ["Cannot be unequipped", "Renders the Siblings, Void Tendrils and Shade passive", "Unlocks 4 endings and allows access to the Radiance and Godmaster content"],
 };
 export const kingsoul = {
@@ -425,6 +425,6 @@ export const kingsoul = {
     pngName: "Kingsoul",
     notches: 5,
     flavorText:
-        "Holy charm symbolising a union between higher beings.The bearer will slowly absorb the limitless Soul contained within. Opens the way to a birthplace. (Secondary Effect: Grants access to the Birthplace in the southern Abyss.)",
+        "Holy charm symbolising a union between higher beings. The bearer will slowly absorb the limitless Soul contained within. Opens the way to a birthplace. (Secondary Effect: Grants access to the Birthplace in the southern Abyss.)",
     effectText: ["Slowly generates 4 SOUL every 2 seconds"],
 };

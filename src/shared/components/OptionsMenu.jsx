@@ -36,13 +36,6 @@ const OptionsMenu = () => {
         setNotchTotal(val);
     }
 
-    //automatically adds void heart if that radio is selected
-    useEffect(() => {
-        if (hasVoidHeart && !charms.some((c) => c.id === "voidHeart")) {
-            addCharm(voidHeart);
-        }
-    }, [hasVoidHeart]);
-
     let hpOptions = [];
     for (let i = 9; i >= 5; i--) {
         hpOptions.push({ val: i, label: i.toString() });

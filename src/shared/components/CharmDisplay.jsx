@@ -1,7 +1,7 @@
-import React, { useMemo } from "react";
+import React from "react";
 import { Tooltip, tooltipClasses } from "@mui/material";
 import styled from "@emotion/styled";
-const fullNotch = require("../images/full notch.png");
+import TooltipDisplay from "./TooltipDisplay";
 
 //TODO: play with click vs tap settings - don't want it to disappear too quickly for mobile users
 //elements have a touchstart event that may help
@@ -10,9 +10,6 @@ const fullNotch = require("../images/full notch.png");
 
 //TODO: when site bg is black, tooltip has annoying black bar at top
 //TODO: change black across site to the dark grey used for bg
-
-//! get "inCharms" from props
-//! inCharms t/f : dull it out, add glow
 
 const CharmDisplay = ({ charm, charms, handleClick }) => {
     const isInCharms = charms ? charms.some((c) => c.id === charm.id) : false;
@@ -30,25 +27,6 @@ const CharmDisplay = ({ charm, charms, handleClick }) => {
 
 export default CharmDisplay;
 
-//when hovered over, show:
-//name
-//notches
-//flavor and/or effect text
-const TooltipDisplay = ({ charm }) => {
-    let notches = Array(charm.notches).fill(fullNotch);
-    return (
-        <>
-            <h2>{charm.name}</h2>
-            {notches.map((n, idx) => {
-                return <NotchImg key={idx} src={n} />;
-            })}
-            <div>{charm.effectText}</div>
-            <br />
-            <i>{charm.flavorText}</i>
-        </>
-    );
-};
-
 const Div = styled("div")((props) => ({
     textAlign: "center",
     fontSize: "10px",
@@ -61,19 +39,16 @@ const Img = styled("img")((props) => ({
     marginTop: "2px",
     height: "50px",
     backgroundColor: "transparent",
-    filter: props.isInCharms ? "drop-shadow(0px 0px 15px white)" : "",
+    filter: props.isInCharms ? "drop-shadow(0px 0px 10px white)" : "",
 }));
 
 const CustomTooltip = styled(({ className, ...props }) => <Tooltip {...props} classes={{ popper: className }} />)(() => ({
     [`& .${tooltipClasses.tooltip}`]: {
         backgroundColor: "rgb(14,14,14)",
         color: "white",
-        border: "1px solid white",
+        //using boxShadows due to weird black artifact above the tooltip when hovering
+        boxShadow: "0px -13px 0 0 rgb(14,14,14), 0px 13px 0 0 rgb(14,14,14), 0px -13px 0 1px white, 0px 13px 0 1px white",
         fontSize: 11,
     },
 }));
-
-const NotchImg = styled("img")((props) => ({
-    height: "20px",
-    marginBottom: "10px",
-}));
+// tooltipClasses.tooltipPlacementTop

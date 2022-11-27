@@ -19,6 +19,13 @@ const CharmSelector = () => {
     const { hasVoidHeart, hasCarefreeMelody } = useCharmTogglesContext();
     const { width, ref } = useResizeDetector();
 
+    //automatically adds void heart if that radio is selected
+    useEffect(() => {
+        if (hasVoidHeart && !charms.some((c) => c.id === "voidHeart")) {
+            addCharm(voidHeart);
+        }
+    }, [hasVoidHeart]);
+
     useEffect(() => {
         let count = 0;
         charms.forEach((c) => (count += c.notches));
