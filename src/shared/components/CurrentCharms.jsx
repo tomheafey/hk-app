@@ -35,14 +35,11 @@ const CurrentCharms = () => {
                     }
                 })}
             </CurrentCharmsContainer>
-            <OverCharmedDiv>{isOvercharmed && "OVERCHARMED"} </OverCharmedDiv>
-            <NotchesDiv>
+            {/* <OverCharmedDiv>{isOvercharmed && "OVERCHARMED"} </OverCharmedDiv> */}
+            {/* <NotchesDiv>
                 <NotchesTextDiv>Notches</NotchesTextDiv>
                 <NotchDisplay notchesArray={notchesArray} />
-                {/* {notchesArray.map((n, idx) => (
-                    <span key={idx}>{n}</span>
-                ))} */}
-            </NotchesDiv>
+            </NotchesDiv> */}
         </>
     );
 };
