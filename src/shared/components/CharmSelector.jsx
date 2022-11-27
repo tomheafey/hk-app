@@ -12,7 +12,6 @@ import { useResizeDetector } from "react-resize-detector";
 //TODO: figure out logic for dulling out charm when it's currently selected (turn down alpha or something?)
 //TODO: add glowy background to selected charms (the ones that are dulled out)
 //TODO (maybe): animation when equipping/unequipping charms
-//TODO: display tap+hold message for mobile users (maybe try react-resize-detector?)
 
 const CharmSelector = () => {
     const { charms, addCharm, removeCharm } = useCharmContext();
@@ -54,32 +53,31 @@ const CharmSelector = () => {
         }
         return;
     }
-
     return (
         <>
             <Div ref={ref}>Charm Selector</Div>
             {width < 400 && <div>Tap+hold charms to view details</div>}
             <CharmSelectionContainer>
                 {masterCharmList.map((charm) => {
-                    return <CharmDisplay key={charm.id} charm={charm} handleClick={handleCharmClick} />;
+                    return <CharmDisplay key={charm.id} charm={charm} charms={charms} handleClick={handleCharmClick} />;
                 })}
                 {hasCarefreeMelody && (
-                    <CharmDisplay charm={carefreeMelody} handleClick={handleCharmClick}>
+                    <CharmDisplay charm={carefreeMelody} charms={charms} handleClick={handleCharmClick}>
                         {carefreeMelody.name}
                     </CharmDisplay>
                 )}
                 {!hasCarefreeMelody && (
-                    <CharmDisplay charm={grimmchild} handleClick={handleCharmClick}>
+                    <CharmDisplay charm={grimmchild} charms={charms} handleClick={handleCharmClick}>
                         {grimmchild.name}
                     </CharmDisplay>
                 )}
                 {hasVoidHeart && (
-                    <CharmDisplay charm={voidHeart} handleClick={handleCharmClick}>
+                    <CharmDisplay charm={voidHeart} charms={charms} handleClick={handleCharmClick}>
                         {voidHeart.name}
                     </CharmDisplay>
                 )}
                 {!hasVoidHeart && (
-                    <CharmDisplay charm={kingsoul} handleClick={handleCharmClick}>
+                    <CharmDisplay charm={kingsoul} charms={charms} handleClick={handleCharmClick}>
                         {kingsoul.name}
                     </CharmDisplay>
                 )}
