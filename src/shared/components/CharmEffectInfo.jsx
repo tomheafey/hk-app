@@ -1,16 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
 
-const testCharm = {
-    id: "voidHeart",
-    name: "Void Heart",
-    pngName: "Void_Heart",
-    notches: 0,
-    flavorText:
-        "An emptiness that was hidden within, now unconstrained. Unifies the void under the bearer's will.This charm is a part of its bearer and can not be unequipped. (Secondary Effect: Grants access to multiple endings, locks out all other endings. Removes hostility from some enemy types.)",
-    effectText: ["Cannot be unequipped", "Renders the Siblings, Void Tendrils and Shade passive", "Unlocks 4 endings and allows access to the Radiance and Godmaster content"],
-};
-
 const CharmEffectInfo = ({ charms }) => {
     return (
         <>

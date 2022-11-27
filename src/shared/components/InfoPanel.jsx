@@ -25,21 +25,8 @@ import calculateNailDamage from "../functions/calculateNailDamage";
 import { calculateFireballDamage, calculateDiveDamage, calculateShriekDamage } from "../functions/calculateSpellDamage";
 import charmSynergies from "../functions/charmSynergies";
 import CharmEffectInfo from "./CharmEffectInfo";
+import DamageOutputInfo from "./DamageOutputInfo";
 import SynergyInfo from "./SynergyInfo";
-
-const testCharm = {
-    id: "shamanStone",
-    name: "Shaman Stone",
-    pngName: "Shaman_Stone",
-    notches: 3,
-    flavorText: "Said to contain the knowledge of past generations of shaman. Increases the power of spells, dealing more damage to foes.",
-    effectText: [
-        "Increases Vengeful Spirit/Shade Soul damage by 33%",
-        "Increases Desolate Dive damage by 51% and Descending Dark damage by 47%",
-        "Increases Howling Wraiths/Abyss Shriek damage by 50%",
-        "Increases the size of Vengeful Spirit/Shade Soul",
-    ],
-};
 
 //! max masks: 22
 const InfoPanel = () => {
@@ -56,6 +43,18 @@ const InfoPanel = () => {
         return calculateNailDamage(baseNailDamage, charms);
     }, [charms, baseNailDamage]);
 
+    const currentFireballDamage = useMemo(() => {
+        return calculateFireballDamage(baseFireballDamage, charms);
+    }, [charms, baseFireballDamage]);
+
+    const currentDiveDamage = useMemo(() => {
+        return calculateDiveDamage(baseDiveDamage, charms, hasDescendingDark);
+    }, [charms, baseDiveDamage]);
+
+    const currentShriekDamage = useMemo(() => {
+        return calculateShriekDamage(baseShriekDamage, charms, hasAbyssShriek);
+    }, [charms, baseShriekDamage]);
+
     return (
         <>
             <MaskInfoContainer>
@@ -67,25 +66,20 @@ const InfoPanel = () => {
                 </MasksContainer>
             </MaskInfoContainer>
 
-            <DamageInfoContainer>
-                <DamageLabelsContainer>
-                    <div>Nail Damage:</div>
-                    <div>{hasShadeSoul ? "Shade Soul" : "Vengeful Spirit"} Damage:</div>
-                    <div>{hasDescendingDark ? "Descending Dark" : "Desolate Dive"} Damage:</div>
-                    <div>{hasAbyssShriek ? "Abyss Shriek" : "Howling Wraiths"} Damage:</div>
-                </DamageLabelsContainer>
-                <div>
-                    {baseNailDamage < currentNailDamage && (
-                        <b>
-                            <IncreaseSpan>{currentNailDamage}</IncreaseSpan>
-                        </b>
-                    )}
-                    {!(baseNailDamage < currentNailDamage) && baseNailDamage}
-                    <div>{calculateFireballDamage(baseFireballDamage, charms)}</div>
-                    <div>{calculateDiveDamage(baseDiveDamage, charms, hasDescendingDark)}</div>
-                    <div>{calculateShriekDamage(baseShriekDamage, charms, hasAbyssShriek)}</div>
-                </div>
-            </DamageInfoContainer>
+            <DamageOutputInfo
+                hasShadeSoul={hasShadeSoul}
+                hasDescendingDark={hasDescendingDark}
+                hasAbyssShriek={hasAbyssShriek}
+                baseNailDamage={baseNailDamage}
+                baseFireballDamage={baseFireballDamage}
+                baseDiveDamage={baseDiveDamage}
+                baseShriekDamage={baseShriekDamage}
+                currentNailDamage={currentNailDamage}
+                currentFireballDamage={currentFireballDamage}
+                currentDiveDamage={currentDiveDamage}
+                currentShriekDamage={currentShriekDamage}
+                charms={charms}
+            />
 
             <CharmEffectInfo charms={charms} />
 
