@@ -1,4 +1,6 @@
+import styled from "@emotion/styled";
 import React from "react";
+import Button from "../styled/Button";
 const fullNotch = require("../images/full notch.png");
 
 const NotchSelector = ({ notchTotal, handleToggle }) => {
@@ -17,10 +19,18 @@ const NotchSelector = ({ notchTotal, handleToggle }) => {
 
     return (
         <>
-            <button onClick={decNotches}>-</button> Notches <button onClick={incNotches}>+</button>
+            <div>
+                <Button plusMinus onClick={decNotches}>
+                    –
+                </Button>
+                {" Notches "}
+                <Button plusMinus onClick={incNotches}>
+                    +
+                </Button>
+            </div>
             <div>
                 {notchesArray.map((n, idx) => (
-                    <img key={idx} src={n} />
+                    <NotchImg key={idx} src={n} />
                 ))}
             </div>
         </>
@@ -28,3 +38,13 @@ const NotchSelector = ({ notchTotal, handleToggle }) => {
 };
 
 export default NotchSelector;
+
+const NotchImg = styled("img")({
+    height: "25px",
+    "@media (min-width: 600px)": {
+        height: "35px",
+    },
+    "@media (min-width: 900px)": {
+        height: "45px",
+    },
+});

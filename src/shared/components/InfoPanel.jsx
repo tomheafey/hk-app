@@ -9,6 +9,7 @@ import generateHPImageArray from "../functions/calculateHP";
 import calculateNailDamage from "../functions/calculateNailDamage";
 import { calculateFireballDamage, calculateDiveDamage, calculateShriekDamage } from "../functions/calculateSpellDamage";
 import charmSynergies from "../functions/charmSynergies";
+import HR from "../styled/HR";
 import CharmEffectInfo from "./CharmEffectInfo";
 import DamageOutputInfo from "./DamageOutputInfo";
 import MaskInfo from "./MaskInfo";
@@ -51,6 +52,7 @@ const InfoPanel = () => {
             <Div>
                 <MaskInfo baseHP={baseHP} charms={charms} generateHPImageArray={generateHPImageArray} />
             </Div>
+            <HR />
             <Div>
                 <DamageOutputInfo
                     hasShadeSoul={hasShadeSoul}
@@ -67,9 +69,11 @@ const InfoPanel = () => {
                     charms={charms}
                 />
             </Div>
+            <HR />
             <Div>
                 <CharmEffectInfo charms={charms} />
             </Div>
+            <HR />
             <Div>
                 <SynergyInfo synergies={synergies} />
             </Div>
@@ -80,5 +84,5 @@ const InfoPanel = () => {
 export default InfoPanel;
 
 const Div = styled("div")((props) => ({
-    marginBottom: "15px",
+    marginBottom: "5px",
 }));

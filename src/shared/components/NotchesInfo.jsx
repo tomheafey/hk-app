@@ -17,10 +17,11 @@ const NotchesInfo = ({ isOvercharmed, notchesArray }) => {
 export default NotchesInfo;
 
 const OverCharmedDiv = styled("div")((props) => ({
-    height: "35px",
+    height: "30px",
     fontSize: "25px",
     color: "#964294",
     fontFamily: "Trajan Pro",
+    marginBottom: "5px",
 }));
 
 const NotchesDiv = styled("div")((props) => ({

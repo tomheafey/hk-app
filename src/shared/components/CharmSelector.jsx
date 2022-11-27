@@ -7,10 +7,10 @@ import { useNotchesContext } from "../context/NotchesContext";
 import { useCharmTogglesContext } from "../context/CharmTogglesContext";
 import { useResizeDetector } from "react-resize-detector";
 
+const topBorder = require("../images/test.png");
+
 //! using lazy method of swapping out grimm/cf & void/kingsoul
 
-//TODO: figure out logic for dulling out charm when it's currently selected (turn down alpha or something?)
-//TODO: add glowy background to selected charms (the ones that are dulled out)
 //TODO (maybe): animation when equipping/unequipping charms
 
 const CharmSelector = () => {
@@ -55,8 +55,12 @@ const CharmSelector = () => {
     }
     return (
         <>
-            <Div ref={ref}>Charm Selector</Div>
-            {width < 400 && <div>Tap+hold charms to view details</div>}
+            <SectionHeaderContainer ref={ref}>
+                <Div>Charm Selector</Div>
+                <BorderImg src={topBorder} />
+            </SectionHeaderContainer>
+
+            {width < 400 && <TapHoldTextDiv>Tap+hold charms to view details</TapHoldTextDiv>}
             <CharmSelectionContainer>
                 {masterCharmList.map((charm) => {
                     return <CharmDisplay key={charm.id} charm={charm} charms={charms} handleClick={handleCharmClick} />;
@@ -89,13 +93,54 @@ const CharmSelector = () => {
 export default CharmSelector;
 
 const CharmSelectionContainer = styled("div")((props) => ({
-    border: "1px solid grey",
+    // border: "1px solid grey",
     borderRadius: "10px",
     display: "flex",
     flexFlow: "row wrap",
+    justifyContent: "center",
+}));
+
+const SectionHeaderContainer = styled("div")(() => ({
+    display: "flex",
+    flexFlow: "column nowrap",
+    alignItems: "center",
+    // backgroundSize: "65%",
+    // backgroundPosition: "center",
+    // backgroundRepeat: "no-repeat",
+    // backgroundImage: `url(${topBorder})`,
 }));
 
 const Div = styled("div")(() => ({
-    fontSize: "25px",
-    marginBottom: "10px",
+    // border: "1px solid white",
+
+    fontSize: "15px",
+    "@media (min-width: 600px)": {
+        fontSize: "20px",
+    },
+    "@media (min-width: 900px)": {
+        fontSize: "25px",
+    },
+
+    // fontSize: "3vw",
+    // backgroundColor: "transparent",
+}));
+
+const BorderImg = styled("img")(() => ({
+    // border: "1px solid white",
+    width: "85%",
+    maxWidth: "1000px",
+    backgroundColor: "transparent",
+    marginTop: "-5px",
+    "@media (min-width: 600px)": {
+        marginTop: "-10px",
+    },
+    "@media (min-width: 900px)": {
+        marginTop: "-15px",
+    },
+}));
+
+const TapHoldTextDiv = styled("div")((props) => ({
+    fontSize: "10px",
+    textAlign: "center",
+    marginBottom: "5px",
 }));

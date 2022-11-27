@@ -85,25 +85,40 @@ const NailSelectContainer = styled("div")(() => ({
 }));
 
 const Button = styled("button")(() => ({
+    width: "60px",
+    height: "80px",
+    fontSize: "10px",
+    margin: "0px 2px",
+
+    "@media (min-width: 600px)": {
+        width: "75px",
+        height: "100px",
+        fontSize: "12px",
+        margin: "0px 4px",
+    },
+    "@media (min-width: 900px)": {
+        width: "100px",
+        height: "133px",
+        fontSize: "14px",
+        margin: "0px 6px",
+    },
+
     border: "1px solid white",
     color: "white",
-    fontSize: "10px",
     borderRadius: "5px",
-    width: "75px",
-    height: "100px",
     opacity: ".5",
     "&:disabled": {
-        border: "3px solid white",
+        border: "2px solid white",
         opacity: "1",
     },
+    "&:hover": {
+        border: "2px solid white",
+    },
 }));
+
 const ButtonImg = styled("img")(() => ({
     height: "50%",
     marginBottom: "5px",
-    // "&:disabled": {
-    //     border: "3px solid white",
-    //     color: "white",
-    // },
 }));
 
 const NailContainer = styled("div")(() => ({

@@ -5,8 +5,8 @@ import CurrentCharms from "../shared/components/CurrentCharms";
 import InfoPanel from "../shared/components/InfoPanel";
 import { useNavigate } from "react-router-dom";
 import styled from "@emotion/styled";
-
-//TODO: figure out how exactly we want the info displayed - all options and charm picker at top, then selected notches and info panel below? or keep current charms + info panel at top, with selector at the bottom (sort of how it's layed out in the game)?
+import HR from "../shared/styled/HR";
+import Button from "../shared/styled/Button";
 
 const MainPage = () => {
     let navigate = useNavigate();
@@ -19,6 +19,7 @@ const MainPage = () => {
                 <Button onClick={(e) => goToOptionsPage()}>Return to options</Button>
             </Div>
             <CharmSelector />
+            <HR />
             <CurrentCharms />
             <InfoPanel />
         </>
@@ -30,11 +31,4 @@ export default MainPage;
 const Div = styled("div")(() => ({
     display: "flex",
     justifyContent: "right",
-}));
-
-const Button = styled("button")(() => ({
-    fontSize: "15px",
-    border: "1px solid white",
-    borderRadius: "5px",
-    "&:hover": {},
 }));

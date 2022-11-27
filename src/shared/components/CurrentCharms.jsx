@@ -39,7 +39,7 @@ const CurrentCharmsContainer = styled("div")((props) => ({
     // border: "1px solid blue",
     display: "flex",
     flexFlow: "row wrap",
-    marginBottom: "10px",
+    marginBottom: "5px",
 }));
 
 const Div = styled("div")(() => ({

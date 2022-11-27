@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import generateHPImageArray from "../functions/calculateHP";
-
-//use calculateHP (feed empty array for charms)?
+import Button from "../styled/Button";
 
 const MaskSelector = ({ baseHP, setBaseHP }) => {
     function decHP() {
@@ -18,10 +17,18 @@ const MaskSelector = ({ baseHP, setBaseHP }) => {
 
     return (
         <>
-            <button onClick={decHP}>-</button> Masks <button onClick={incHP}>+</button>
+            <div>
+                <Button plusMinus onClick={decHP}>
+                    –
+                </Button>
+                {" Masks "}
+                <Button plusMinus onClick={incHP}>
+                    +
+                </Button>
+            </div>
             <div>
                 {generateHPImageArray(baseHP, []).map((m, idx) => (
-                    <img key={idx} src={m} />
+                    <MaskImg key={idx} src={m} />
                 ))}
             </div>
         </>
@@ -30,4 +37,12 @@ const MaskSelector = ({ baseHP, setBaseHP }) => {
 
 export default MaskSelector;
 
-const fdsa = styled("div")({});
+const MaskImg = styled("img")({
+    height: "40px",
+    "@media (min-width: 600px)": {
+        height: "60px",
+    },
+    "@media (min-width: 900px)": {
+        height: "80px",
+    },
+});

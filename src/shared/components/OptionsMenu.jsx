@@ -13,6 +13,7 @@ import NailSelector from "./NailSelector";
 import MaskSelector from "./MaskSelector";
 import NotchSelector from "./NotchSelector";
 import ToggleButtonGroup from "./ToggleButtonGroup";
+import HR from "../styled/HR";
 
 const shadeSoul = require("../images/shade soul.png");
 const vengefulSpirit = require("../images/vengeful spirit.png");
@@ -54,14 +55,20 @@ const OptionsMenu = () => {
 
     return (
         <>
-            <div>
+            <Div>
                 <NailSelector nailLevel={nailLevel} setNailLevel={setNailLevel} />
-                {/* <NailSelector setNailLevel={setNailLevel} nailLevel={nailLevel} /> */}
+
+                <HR />
 
                 <MaskSelector baseHP={baseHP} setBaseHP={setBaseHP} />
 
+                <HR />
+
                 <NotchSelector notchTotal={notchTotal} handleToggle={handleNotchToggle} />
 
+                <HR />
+
+                <div>Choose Spells</div>
                 <ToggleButtonGroup
                     hasBetterItem={hasShadeSoul}
                     setHasBetterItem={setHasShadeSoul}
@@ -97,7 +104,8 @@ const OptionsMenu = () => {
                     worseItemPic={howlingWraiths}
                     removeCharm={removeCharm}
                 />
-
+                <HR />
+                <div>Choose Charms</div>
                 <ToggleButtonGroup
                     hasBetterItem={hasCarefreeMelody}
                     setHasBetterItem={setHasCarefreeMelody}
@@ -121,15 +129,15 @@ const OptionsMenu = () => {
                     worseItemPic={require(`../images/${kingsoul.pngName}.png`)}
                     removeCharm={removeCharm}
                 />
-            </div>
+            </Div>
         </>
     );
 };
 
 export default OptionsMenu;
 
-// const StyledToggleButtonGroup = styled(ToggleButtonGroup)(() => ({
-// color: "red",
-// backgroundColor: "black",
-// border: "1px solid white",
-// }));
+const Div = styled("div")(() => ({
+    display: "flex",
+    flexFlow: "column nowrap",
+    alignItems: "center",
+}));

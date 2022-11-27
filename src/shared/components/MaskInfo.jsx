@@ -34,6 +34,6 @@ const HPTextDiv = styled("div")((props) => ({
 }));
 
 const MaskImg = styled("img")((props) => ({
-    height: "30px",
+    height: "20px",
     marginLeft: "2px",
 }));

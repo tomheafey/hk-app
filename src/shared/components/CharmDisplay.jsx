@@ -20,7 +20,7 @@ const CharmDisplay = ({ charm, charms, handleClick }) => {
     return (
         <CustomTooltip enterDelay={500} enterTouchDelay={500} TransitionProps={{}} disableInteractive disableFocusListener title={<TooltipDisplay charm={charm} />}>
             <Div isInCharms={isInCharms} onTouchStart={(e) => e.stopPropagation()} onClick={(e) => handleClick(charm)}>
-                <Img src={require(`../images/${charm.pngName}.png`)} />
+                <Img isInCharms={isInCharms} src={require(`../images/${charm.pngName}.png`)} />
                 <br />
                 <i>{charm.name}</i>
             </Div>
@@ -50,9 +50,7 @@ const TooltipDisplay = ({ charm }) => {
 };
 
 const Div = styled("div")((props) => ({
-    // border: "1px solid black",
     textAlign: "center",
-    // overflowWrap: "break-word",
     fontSize: "10px",
     height: "80px",
     width: "75px",
@@ -62,6 +60,8 @@ const Div = styled("div")((props) => ({
 const Img = styled("img")((props) => ({
     marginTop: "2px",
     height: "50px",
+    backgroundColor: "transparent",
+    filter: props.isInCharms ? "drop-shadow(0px 0px 15px white)" : "",
 }));
 
 const CustomTooltip = styled(({ className, ...props }) => <Tooltip {...props} classes={{ popper: className }} />)(() => ({
