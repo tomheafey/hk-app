@@ -4,9 +4,9 @@ import React from "react";
 import CurrentCharms from "../shared/components/CurrentCharms";
 import InfoPanel from "../shared/components/InfoPanel";
 import { useNavigate } from "react-router-dom";
-import styled from "@emotion/styled";
 import HR from "../shared/styled/HR";
 import Button from "../shared/styled/Button";
+import TopRightButtonContainer from "../shared/styled/TopRightButtonContainer";
 
 const MainPage = () => {
     let navigate = useNavigate();
@@ -15,9 +15,9 @@ const MainPage = () => {
     };
     return (
         <>
-            <Div>
+            <TopRightButtonContainer>
                 <Button onClick={(e) => goToOptionsPage()}>Return to options</Button>
-            </Div>
+            </TopRightButtonContainer>
             <CharmSelector />
             <HR />
             <CurrentCharms />
@@ -27,8 +27,3 @@ const MainPage = () => {
 };
 
 export default MainPage;
-
-const Div = styled("div")(() => ({
-    display: "flex",
-    justifyContent: "right",
-}));

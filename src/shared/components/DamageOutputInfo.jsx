@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import React from "react";
+import SubheaderDiv from "../styled/SubheaderDiv";
 
 const DamageOutputInfo = ({
     hasShadeSoul,
@@ -16,7 +17,7 @@ const DamageOutputInfo = ({
 }) => {
     return (
         <>
-            <Div>Damage Output</Div>
+            <SubheaderDiv>Damage Output</SubheaderDiv>
             <DamageInfoContainer>
                 <DamageLabelsContainer>
                     <div>Nail Damage:</div>
@@ -67,11 +68,6 @@ const DamageOutputInfo = ({
 };
 
 export default DamageOutputInfo;
-
-const Div = styled("div")(() => ({
-    fontSize: "25px",
-    marginBottom: "10px",
-}));
 
 const DamageInfoContainer = styled("div")((props) => ({
     display: "flex",

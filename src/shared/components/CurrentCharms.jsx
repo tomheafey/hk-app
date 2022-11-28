@@ -2,6 +2,7 @@ import { useCharmContext } from "../context/CharmContext";
 import React from "react";
 import styled from "@emotion/styled";
 import CharmDisplay from "./CharmDisplay";
+import SubheaderDiv from "../styled/SubheaderDiv";
 
 //! max amt equippable: 12 (including void heart)
 const CurrentCharms = () => {
@@ -15,7 +16,7 @@ const CurrentCharms = () => {
 
     return (
         <>
-            <Div>Equipped Charms</Div>
+            <SubheaderDiv>Equipped Charms</SubheaderDiv>
 
             <CurrentCharmsContainer>
                 {charms.map((charm) => {
@@ -40,9 +41,4 @@ const CurrentCharmsContainer = styled("div")((props) => ({
     display: "flex",
     flexFlow: "row wrap",
     marginBottom: "5px",
-}));
-
-const Div = styled("div")(() => ({
-    fontSize: "25px",
-    marginBottom: "10px",
 }));

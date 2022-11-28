@@ -2,7 +2,6 @@ import styled from "@emotion/styled";
 import React from "react";
 import NotchDisplay from "./NotchDisplay";
 
-//TODO: max overcham w/ kingsoul barely spills over on mobile
 const NotchesInfo = ({ isOvercharmed, notchesArray }) => {
     return (
         <>

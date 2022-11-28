@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import React from "react";
+import SubheaderDiv from "../styled/SubheaderDiv";
 
 const SynergyInfo = ({ synergies }) => {
     return (
         <>
-            <Div>Charm Synergies</Div>
+            <SubheaderDiv>Charm Synergies</SubheaderDiv>
             {synergies.length === 0 && "No charm synergies."}
             {synergies.map((s, idx) => {
                 return (

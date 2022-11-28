@@ -6,13 +6,12 @@ import CharmDisplay from "./CharmDisplay";
 import { useNotchesContext } from "../context/NotchesContext";
 import { useCharmTogglesContext } from "../context/CharmTogglesContext";
 import { useResizeDetector } from "react-resize-detector";
-
+import TitleContainer from "../styled/TitleContainer";
+import TitleTextDiv from "../styled/TitleTextDiv";
+import TitleImg from "../styled/TitleImg";
 const topBorder = require("../images/test.png");
 
 //! using lazy method of swapping out grimm/cf & void/kingsoul
-
-//TODO (maybe): animation when equipping/unequipping charms
-
 const CharmSelector = () => {
     const { charms, addCharm, removeCharm } = useCharmContext();
     const { notchTotal, notchCount, setNotchCount, notchesArray } = useNotchesContext();
@@ -62,10 +61,10 @@ const CharmSelector = () => {
     }
     return (
         <>
-            <SectionHeaderContainer ref={ref}>
-                <Div>Charm Selector</Div>
-                <BorderImg src={topBorder} />
-            </SectionHeaderContainer>
+            <TitleContainer ref={ref}>
+                <TitleTextDiv>Charm Selector</TitleTextDiv>
+                <TitleImg src={topBorder} />
+            </TitleContainer>
 
             {width < 400 && <TapHoldTextDiv>Tap+hold charms to view details</TapHoldTextDiv>}
             <CharmSelectionContainer>
@@ -105,45 +104,6 @@ const CharmSelectionContainer = styled("div")((props) => ({
     display: "flex",
     flexFlow: "row wrap",
     justifyContent: "center",
-}));
-
-const SectionHeaderContainer = styled("div")(() => ({
-    display: "flex",
-    flexFlow: "column nowrap",
-    alignItems: "center",
-    // backgroundSize: "65%",
-    // backgroundPosition: "center",
-    // backgroundRepeat: "no-repeat",
-    // backgroundImage: `url(${topBorder})`,
-}));
-
-const Div = styled("div")(() => ({
-    // border: "1px solid white",
-
-    fontSize: "15px",
-    "@media (min-width: 600px)": {
-        fontSize: "20px",
-    },
-    "@media (min-width: 900px)": {
-        fontSize: "25px",
-    },
-
-    // fontSize: "3vw",
-    // backgroundColor: "transparent",
-}));
-
-const BorderImg = styled("img")(() => ({
-    // border: "1px solid white",
-    width: "85%",
-    maxWidth: "1000px",
-    backgroundColor: "transparent",
-    marginTop: "-5px",
-    "@media (min-width: 600px)": {
-        marginTop: "-10px",
-    },
-    "@media (min-width: 900px)": {
-        marginTop: "-15px",
-    },
 }));
 
 const TapHoldTextDiv = styled("div")((props) => ({

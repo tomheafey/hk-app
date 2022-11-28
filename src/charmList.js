@@ -32,8 +32,8 @@ export const masterCharmList = [
         flavorText: "Used by shamans to draw more Soul from the world around them. Increases the amount of Soul gained when striking an enemy with the nail.",
         effectText: ["Gain +3 additional SOUL with each hit for main Soul Vessel (base: 11)", "Gain +2 for reserve Soul Vessels (base: 6)"],
     },
+
     {
-        //TODO: condense effect text more? also possibly dynamically adjust text depending on which spells are currently selected
         id: "shamanStone",
         name: "Shaman Stone",
         pngName: "Shaman_Stone",
@@ -217,7 +217,6 @@ export const masterCharmList = [
         effectText: ["Block up to 4 hits while using Focus"],
     },
     {
-        //TODO: possibly adjust this dynamically depending on spell
         id: "flukenest",
         name: "Flukenest",
         pngName: "Flukenest",

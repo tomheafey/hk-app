@@ -1,10 +1,11 @@
 import styled from "@emotion/styled";
 import React from "react";
+import SubheaderDiv from "../styled/SubheaderDiv";
 
 const CharmEffectInfo = ({ charms }) => {
     return (
         <>
-            <Div>Charm Effects</Div>
+            <SubheaderDiv>Charm Effects</SubheaderDiv>
 
             <EffectsContainer>
                 {charms.map((c) => {
@@ -38,11 +39,6 @@ const CharmEffectInfo = ({ charms }) => {
 };
 
 export default CharmEffectInfo;
-
-const Div = styled("div")(() => ({
-    fontSize: "25px",
-    marginBottom: "10px",
-}));
 
 const EffectsContainer = styled("div")(() => ({
     display: "flex",

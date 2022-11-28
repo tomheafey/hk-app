@@ -190,7 +190,7 @@ export default function charmSynergies(charms) {
         }
     }
 
-    //TODO: deep focus + quick focus?
+    //? maybe add deep focus + quick focus?
     //Without any Charms, and ignoring the 0.25 second startup time, it takes 0.891 seconds to Focus. With Quick Focus, it takes 0.594 seconds. With both Deep Focus and Quick Focus, it takes 0.9801 seconds.]
     return synergyStrings;
 }

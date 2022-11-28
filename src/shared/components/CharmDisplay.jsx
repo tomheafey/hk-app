@@ -3,14 +3,6 @@ import { Tooltip, tooltipClasses } from "@mui/material";
 import styled from "@emotion/styled";
 import TooltipDisplay from "./TooltipDisplay";
 
-//TODO: play with click vs tap settings - don't want it to disappear too quickly for mobile users
-//elements have a touchstart event that may help
-
-//TODO: split out TooltipDisplay into its own file
-
-//TODO: when site bg is black, tooltip has annoying black bar at top
-//TODO: change black across site to the dark grey used for bg
-
 const CharmDisplay = ({ charm, charms, handleClick }) => {
     const isInCharms = charms ? charms.some((c) => c.id === charm.id) : false;
 

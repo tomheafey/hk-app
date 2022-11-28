@@ -1,6 +1,4 @@
-//TODO (maybe): images of diff nails in nail level dropdown
-
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useCharmContext } from "../context/CharmContext";
 import { useCharmTogglesContext } from "../context/CharmTogglesContext";
 import { useHPContext } from "../context/HPContext";
