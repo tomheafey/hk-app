@@ -72,7 +72,6 @@ export default DamageOutputInfo;
 const DamageInfoContainer = styled("div")((props) => ({
     display: "flex",
     flexFlow: "row nowrap",
-    // marginLeft: "25px",
 }));
 
 const DamageLabelsContainer = styled("div")((props) => ({

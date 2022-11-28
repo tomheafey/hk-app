@@ -4,7 +4,6 @@ import styled from "@emotion/styled";
 import CharmDisplay from "./CharmDisplay";
 import SubheaderDiv from "../styled/SubheaderDiv";
 
-//! max amt equippable: 12 (including void heart)
 const CurrentCharms = () => {
     const { charms, removeCharm } = useCharmContext();
 
@@ -21,13 +20,6 @@ const CurrentCharms = () => {
             <CurrentCharmsContainer>
                 {charms.map((charm) => {
                     return <CharmDisplay key={charm.id} charm={charm} handleClick={handleCharmClick} />;
-                    {
-                        /* (
-                        <Div key={charm.id} onClick={(e) => handleCharmClick(charm)}>
-                            {charm.id}
-                        </Div>
-                    ); */
-                    }
                 })}
             </CurrentCharmsContainer>
         </>
@@ -37,7 +29,6 @@ const CurrentCharms = () => {
 export default CurrentCharms;
 
 const CurrentCharmsContainer = styled("div")((props) => ({
-    // border: "1px solid blue",
     display: "flex",
     flexFlow: "row wrap",
     marginBottom: "5px",

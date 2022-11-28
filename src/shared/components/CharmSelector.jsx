@@ -54,7 +54,6 @@ const CharmSelector = () => {
 
             if (notchCount >= notchTotal) {
                 //! if already at max or overcharmed, do nothing
-                //! possibly add indication
             }
         }
         return;
@@ -99,7 +98,6 @@ const CharmSelector = () => {
 export default CharmSelector;
 
 const CharmSelectionContainer = styled("div")((props) => ({
-    // border: "1px solid grey",
     borderRadius: "10px",
     display: "flex",
     flexFlow: "row wrap",

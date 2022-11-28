@@ -24,16 +24,6 @@ const CharmEffectInfo = ({ charms }) => {
                     );
                 })}
             </EffectsContainer>
-
-            {/* <div>
-                <CharmEffectImg src={require(`../images/${testCharm.pngName}.png`)} />
-                <span>{testCharm.name}</span>
-                <ul>
-                    {testCharm.effectText.map((e, idx) => {
-                        return <LI key={idx}>{e}</LI>;
-                    })}
-                </ul>
-            </div> */}
         </>
     );
 };
@@ -47,16 +37,12 @@ const EffectsContainer = styled("div")(() => ({
 
 const EffectContainer = styled("div")(() => ({
     flexBasis: "300px",
-    // border: "1px solid grey",
 }));
 
 const ImgAndNameContainer = styled("div")(() => ({
     display: "flex",
-    // justifyContent: "center",
     alignItems: "center",
 }));
-
-const ImgContainer = styled("div")(() => ({}));
 
 const CharmEffectImg = styled("img")(() => ({
     height: "25px",
@@ -64,14 +50,11 @@ const CharmEffectImg = styled("img")(() => ({
 }));
 
 const UL = styled("ul")(() => ({
-    // display: "flex",
-    // textAlign: "center",
     marginTop: "5px",
     listStyle: "outside",
 }));
 
 const LI = styled("li")(() => ({
     fontSize: "12px",
-    // marginLeft: "50px",
     marginBottom: "2px",
 }));

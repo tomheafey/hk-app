@@ -14,7 +14,7 @@ const OptionsPage = () => {
     const goToMainPage = () => {
         navigate("/main");
     };
-
+    //TODO: make a better page title
     return (
         <>
             <TopRightButtonContainer>
