@@ -34,15 +34,15 @@ const OptionsMenu = () => {
         setNotchTotal(val);
     }
 
-    let hpOptions = [];
-    for (let i = 9; i >= 5; i--) {
-        hpOptions.push({ val: i, label: i.toString() });
-    }
+    // let hpOptions = [];
+    // for (let i = 9; i >= 5; i--) {
+    //     hpOptions.push({ val: i, label: i.toString() });
+    // }
 
-    let notchOptions = [];
-    for (let i = 11; i >= 3; i--) {
-        notchOptions.push({ val: i, label: i.toString() });
-    }
+    // let notchOptions = [];
+    // for (let i = 11; i >= 3; i--) {
+    //     notchOptions.push({ val: i, label: i.toString() });
+    // }
 
     return (
         <>

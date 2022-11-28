@@ -7,7 +7,7 @@ import TitleContainer from "../shared/styled/TitleContainer";
 import TitleTextDiv from "../shared/styled/TitleTextDiv";
 import TitleImg from "../shared/styled/TitleImg";
 import TopRightButtonContainer from "../shared/styled/TopRightButtonContainer";
-const topBorder = require("../shared/images/test.png");
+const topBorder = require("../shared/images/hk top border.png");
 
 const OptionsPage = () => {
     let navigate = useNavigate();

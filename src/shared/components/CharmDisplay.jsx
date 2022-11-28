@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import TooltipDisplay from "./TooltipDisplay";
 
 const CharmDisplay = ({ charm, charms, handleClick }) => {
+    //boolean used for indicating which charms are currently equipped
     const isInCharms = charms ? charms.some((c) => c.id === charm.id) : false;
 
     return (
@@ -43,4 +44,3 @@ const CustomTooltip = styled(({ className, ...props }) => <Tooltip {...props} cl
         fontSize: 11,
     },
 }));
-// tooltipClasses.tooltipPlacementTop

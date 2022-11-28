@@ -9,7 +9,7 @@ import { useResizeDetector } from "react-resize-detector";
 import TitleContainer from "../styled/TitleContainer";
 import TitleTextDiv from "../styled/TitleTextDiv";
 import TitleImg from "../styled/TitleImg";
-const topBorder = require("../images/test.png");
+const topBorder = require("../images/hk top border.png");
 
 //! using lazy method of swapping out grimm/cf & void/kingsoul
 const CharmSelector = () => {
