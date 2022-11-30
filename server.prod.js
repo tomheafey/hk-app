@@ -19744,12 +19744,14 @@ var express = __webpack_require__(3222);
 var app = express();
 var PORT = process.env.PORT || 8080;
 app.use(express.static(__dirname + "/build"));
-if (true) {
-  app.enable("trust proxy");
-  app.use(function (req, res, next) {
-    req.secure ? next() : res.redirect("https://" + req.headers.host + req.url);
-  });
-}
+
+// if (process.env.NODE_ENV === "production") {
+//     app.enable("trust proxy");
+//     app.use((req, res, next) => {
+//         req.secure ? next() : res.redirect("https://" + req.headers.host + req.url);
+//     });
+// }
+
 app.get("*", function (req, res) {
   return res.sendFile(__dirname + "/build/index.html");
 });
