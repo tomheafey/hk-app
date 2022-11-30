@@ -1,5 +1,5 @@
 FROM node:18-alpine
-WORKDIR /app
+WORKDIR /hk-app
 COPY . .
 RUN yarn install --production
 CMD ["node", "src/index.js"]

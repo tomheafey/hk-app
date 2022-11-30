@@ -19740,20 +19740,22 @@ module.exports = JSON.parse('{"100":"Continue","101":"Switching Protocols","102"
 var __webpack_exports__ = {};
 // This entry need to be wrapped in an IIFE because it need to be isolated against other modules in the chunk.
 (() => {
-const express = __webpack_require__(3222);
-const app = express();
-const PORT = process.env.PORT || 8080;
+var express = __webpack_require__(3222);
+var app = express();
+var PORT = process.env.PORT || 8080;
 app.use(express.static(__dirname + "/build"));
 if (true) {
   app.enable("trust proxy");
-  app.use((req, res, next) => {
+  app.use(function (req, res, next) {
     req.secure ? next() : res.redirect("https://" + req.headers.host + req.url);
   });
 }
-app.get("*", (req, res) => {
+app.get("*", function (req, res) {
   return res.sendFile(__dirname + "/build/index.html");
 });
-app.listen(PORT, () => console.log("server working"));
+app.listen(PORT, function () {
+  return console.log("server working");
+});
 })();
 
 module.exports = __webpack_exports__;
